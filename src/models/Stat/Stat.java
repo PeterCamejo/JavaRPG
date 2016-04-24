@@ -1,16 +1,16 @@
 package models.Stat;
 
-public abstract class Stat {
+public class Stat {
     /* Attributes */
     private int lives;
     private double strength;
     private double agility;
     private double intellect;
-    private double hardiness;
+    private double stamina;
     private double experience;
     private double movement;
 
-    private double level; //based off experience
+    private int level; //based off experience
     private double maxHealth; //based on level and hardiness;
     private double maxMana; //based on level and intellect;
     private double attackRating; //based on strength, and level;
@@ -28,7 +28,7 @@ public abstract class Stat {
         strength = 0;
         agility = 0;
         intellect = 0;
-        hardiness = 0;
+        stamina = 0;
         experience = 0;
         movement = 0;
         level = 1;
@@ -37,6 +37,23 @@ public abstract class Stat {
         update();
         currentHealth = maxHealth;
         currentMana  = maxMana;
+    }
+    //Level 1. Meant for Avatar Creation
+    public Stat( int lives , double strength , double agility , double intellect , double stamina , double movement){
+        this.lives = lives;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.stamina = stamina;
+        this.movement = movement;
+        this.experience = 0;
+        this.level = 1;
+        this.experience = 0;
+        this.expNeeded = 100;
+
+        update();
+        currentHealth = maxHealth;
+        currentMana = maxMana;
     }
 
     /* Methods */
@@ -49,7 +66,7 @@ public abstract class Stat {
         }
 
         //Calculate MaxHealth
-        maxHealth = hardiness + level * 3;
+        maxHealth = stamina + level * 3;
 
         //Calculate MaxMana
         maxMana = intellect + level * 3;
@@ -94,10 +111,10 @@ public abstract class Stat {
     }
 
     public void modifyHardiness(double modifier){
-        if(intellect + modifier > 0){
-            hardiness += modifier;
+        if(stamina + modifier > 0){
+            stamina += modifier;
         }else{
-            hardiness = 0;
+            stamina = 0;
         }
     }
 
@@ -116,4 +133,20 @@ public abstract class Stat {
             movement = 0;
         }
     }
+
+    public int getLives(){ return this.lives;}
+    public double getStrength(){ return this.strength;}
+    public double getAgility(){ return this.agility;}
+    public double getIntellect(){ return this.intellect;}
+    public double getStamina(){ return this.stamina;}
+    public double getExperience(){ return this.experience; }
+    public double getMovement(){return this.movement;}
+    public int getLevel(){ return this.level;}
+    public double getMaxHealth(){ return this.maxHealth;}
+    public double getMaxMana(){ return this.maxMana;}
+    public double getAttackRating(){ return this.attackRating;}
+    public double getDodgeRating(){ return this.dodgeRating;}
+    public double getCurrentHealth(){ return this.currentHealth;}
+    public double getCurrentMana(){ return this.currentMana;}
+
 }
