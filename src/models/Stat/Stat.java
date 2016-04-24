@@ -134,6 +134,26 @@ public class Stat {
         }
     }
 
+    public void modifyHealth(double modifier){
+        if(currentHealth + modifier < 0){
+            currentHealth = 0;
+        }else if(currentHealth + modifier > maxHealth){
+            currentHealth = maxHealth;
+        }else{
+            currentHealth+=modifier;
+        }
+    }
+
+    public void modifyMana(double modifier){
+        if(currentMana + modifier < 0){
+            currentMana = 0;
+        }else if(currentMana + modifier > maxMana){
+            currentMana = maxMana;
+        }else{
+            currentMana += modifier;
+        }
+    }
+
     public int getLives(){ return this.lives;}
     public double getStrength(){ return this.strength;}
     public double getAgility(){ return this.agility;}

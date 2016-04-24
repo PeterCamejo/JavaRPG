@@ -37,6 +37,14 @@ public abstract class Entity{
     public void dropItem(TakeableItem item){
         currentTile.addItem(inventory.removeItem(item.getId()));
     }
+    public void destroyItem(TakeableItem item){
+        inventory.removeItem(item.getId());
+    }
+
+    /* Stats */
+    public Stat getStats(){
+        return this.stats;
+    }
 
 
 

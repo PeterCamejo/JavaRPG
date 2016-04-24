@@ -1,11 +1,9 @@
 package models.Item;
 
 import java.awt.image.BufferedImage;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
+import models.Buff.Buff;
 import models.Entity.Entity;
-import utilities.Location.Location;
+
 
 /*
 * Implemented by Peter Camejo
@@ -13,23 +11,22 @@ import utilities.Location.Location;
 
 public class ConsumableItem extends TakeableItem {
     /* Attributes */
-    private Map<String , Double> statModifier;
+    private Buff buff;
 
     /* Constructor */
     public ConsumableItem(){
         super();
     }
 
-    public ConsumableItem(String statName , double modifier , BufferedImage image , int id, String name){
+    public ConsumableItem(String statName , double modifier , BufferedImage image , int id, String name , Buff buff){
         super(image, id, name);
-        statModifier = new LinkedHashMap<>();
-        statModifier.put(statName , modifier);
+        this.buff = buff;
     }
 
     /* Methods */
     public void use(Entity entity){
-        entity.modifyStats(this.statModifier);
-        entity.destroyItem(this.id);
+        buff.apply(entity.getStats());
+        entity.destroyItem(this);
     }
 
 }
