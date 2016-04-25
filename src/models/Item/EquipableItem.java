@@ -1,10 +1,13 @@
 package models.Item;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import models.Buff.Buff;
 import models.Inventory.Inventory;
 import models.Equipment.Equipment;
 import models.Entity.Entity;
-import utilities.Location.Location;
+
 
 /*
 * Implemented by Peter Camejo
@@ -13,26 +16,40 @@ import utilities.Location.Location;
 public abstract class EquipableItem extends TakeableItem {
     /* Attributes */
     protected double rating; //meant to be armorRating and attackRating respectively.
+    protected ArrayList<Buff> buffs;
 
     /* Constructor */
     public EquipableItem(){
         super();
     }
 
-    public EquipableItem(BufferedImage image , int id, String name , double rating){
+    public EquipableItem(BufferedImage image , int id, String name , double rating , ArrayList<Buff> buffs){
         super(image, id, name);
         this.rating = rating;
+        this.buffs = buffs;
     }
 
     /* Methods */
 
     public abstract void equip(Entity entity , Equipment equipment , Inventory inventory);
     public abstract void unequip(Entity entity, Equipment equipment , Inventory inventory);
-    public abstract void applyRating(Entity entity);
-    public abstract void unapplyRating(Entity entity);
 
     public void use(Entity entity){
         entity.equip(this);
+    }
+
+    public void applyBuffs(Entity entity){
+        for(Buff buff : buffs){
+            buff.apply(entity.getStats());
+        }
+    }
+
+    public void removeBuffs(Entity entity){
+        for(Buff buff : buffs){
+            buff.negateModifier();
+            buff.apply(entity.getStats());
+            buff.negateModifier();
+        }
     }
 
     public double getRating(){

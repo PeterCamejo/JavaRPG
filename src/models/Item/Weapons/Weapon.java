@@ -1,15 +1,15 @@
 package models.Item.Weapons;
 
+import models.Buff.Buff;
+import models.Buff.WeaponBuff;
 import models.Item.EquipableItem;
 import models.Inventory.Inventory;
 import models.Equipment.Equipment;
 import models.Item.Requirement;
 import java.awt.image.BufferedImage;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import models.Entity.Entity;
-import utilities.Location.Location;
 
 /**
  *  Implemented by Peter Camejo
@@ -25,16 +25,18 @@ public class Weapon extends EquipableItem {
         requirement = new Requirement();
     }
 
-    public Weapon(double weaponSpeedString,String requiredOccupation, BufferedImage image, int id, String name, double attackRating) {
-        super(image, id, name, attackRating);
+    public Weapon(double weaponSpeed,String requiredOccupation, BufferedImage image, int id, String name, double attackRating , ArrayList<Buff> buffs) {
+        super(image, id, name, attackRating , buffs);
         requirement = new Requirement(null, 0, requiredOccupation);
         this.weaponSpeed = weaponSpeed;
+        buffs.add(new WeaponBuff(attackRating));
     }
 
-    public Weapon(double weaponSpeed, String requiredOccupation, int requiredLevel, BufferedImage image, int id, String name, double attackRating) {
-        super(image, id, name, attackRating);
+    public Weapon(double weaponSpeed, String requiredOccupation, int requiredLevel, BufferedImage image, int id, String name, double attackRating , ArrayList<Buff> buffs) {
+        super(image, id, name, attackRating, buffs);
         requirement = new Requirement(null, requiredLevel, requiredOccupation);
         this.weaponSpeed = weaponSpeed;
+        buffs.add(new WeaponBuff(attackRating));
 
     }
 
@@ -46,27 +48,16 @@ public class Weapon extends EquipableItem {
         }
         equipment.setEquippedWeapon(this);
         inventory.removeItem(id);
-        this.applyRating(entity);
+        this.applyBuffs(entity);
     }
 
     public void unequip(Entity entity, Equipment equipment, Inventory inventory) {
         equipment.setEquippedWeapon(null);
         inventory.addItem(this);
-        this.unapplyRating(entity);
+        this.removeBuffs(entity);
     }
 
 
-    public void applyRating(Entity entity){
-        Map<String , Double > statModifier =  new LinkedHashMap<>();
-        statModifier.put("Attack" , this.rating);
-        entity.modifyStats(statModifier);
-    }
-
-    public void unapplyRating(Entity entity){
-        Map<String, Double> statModifier = new LinkedHashMap<>();
-        statModifier.put("Attack" , -this.rating);
-        entity.modifyStats(statModifier);
-    }
 
 
 }

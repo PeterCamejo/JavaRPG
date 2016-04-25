@@ -6,7 +6,7 @@ import models.Entity.Entity;
 
 
 /*
-* Implemented by Peter Camejo
+*  Buffs need to be timed somehow.
 */
 
 public class ConsumableItem extends TakeableItem {

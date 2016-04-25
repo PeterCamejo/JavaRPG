@@ -22,6 +22,10 @@ public class Stat {
     private double currentHealth;
     private double currentMana;
 
+    //Equipment
+    private double armorRating;
+    private double weaponDamage;
+
     /* Constructor */
     public Stat(){
         lives = 0;
@@ -31,6 +35,8 @@ public class Stat {
         stamina = 0;
         experience = 0;
         movement = 0;
+        armorRating = 0;
+        weaponDamage = 0;
         level = 1;
         expNeeded = 100;
 
@@ -47,6 +53,8 @@ public class Stat {
         this.stamina = stamina;
         this.movement = movement;
         this.experience = 0;
+        this.weaponDamage = 0;
+        this.armorRating = 0;
         this.level = 1;
         this.experience = 0;
         this.expNeeded = 100;
@@ -75,7 +83,7 @@ public class Stat {
         dodgeRating = agility + level * 3;
 
         //Calculate attackRating
-        attackRating = strength + level * 3;
+        attackRating = weaponDamage + strength + level * 3;
     }
 
     public void modifyLives(int modifier){
@@ -153,6 +161,22 @@ public class Stat {
             currentMana = maxMana;
         }else{
             currentMana += modifier;
+        }
+    }
+
+    public void modifyWeaponDamage(double modifier){
+        if(weaponDamage + modifier > 0){
+            weaponDamage += modifier;
+        }else{
+            weaponDamage = 0;
+        }
+    }
+
+    public void modifyArmorRating(double modifier){
+        if(armorRating + modifier > 0){
+            armorRating += modifier;
+        }else{
+            armorRating = 0;
         }
     }
 

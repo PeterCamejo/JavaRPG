@@ -1,8 +1,10 @@
 package models.Item.Weapons;
 
-import utilities.Location.Location;
+import models.Buff.Buff;
 import views.Assets;
-import java.awt.image.BufferedImage;
+
+import java.util.ArrayList;
+
 
 /**
  *   Implemented by Peter Camejo
@@ -14,12 +16,12 @@ import java.awt.image.BufferedImage;
 public class Fist extends Weapon{
     /* Constructors */
     //No level requirement
-    public Fist(int id, String name , double attackRating){
-        super(3.00 , "Smasher" , Assets.fist , id, name, attackRating);
+    public Fist(int id, String name , double attackRating, ArrayList<Buff> buffs){
+        super(3.00 , "Smasher" , Assets.fist , id, name, attackRating , buffs );
     }
 
     //Level requirement
-    public Fist(int requiredLevel ,  int id,  String name , double attackRating){
-        super(3.00 , "Smasher" , requiredLevel , Assets.fist, id,  name, attackRating);
+    public Fist(int requiredLevel ,  int id,  String name , double attackRating , ArrayList<Buff> buffs){
+        super(3.00 , "Smasher" , requiredLevel , Assets.fist, id,  name, attackRating , buffs);
     }
 }

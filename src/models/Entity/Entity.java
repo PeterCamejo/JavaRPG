@@ -1,6 +1,7 @@
 package models.Entity;
 
 
+import models.Item.EquipableItem;
 import models.Item.TakeableItem;
 import models.Map.Tile;
 import models.SkillContainer.SkillContainer;
@@ -44,6 +45,11 @@ public abstract class Entity{
     /* Stats */
     public Stat getStats(){
         return this.stats;
+    }
+
+    /* Equipment */
+    public void equip(EquipableItem item){
+        item.equip(this , this.equipment , this.inventory);
     }
 
 

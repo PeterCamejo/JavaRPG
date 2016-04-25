@@ -1,9 +1,10 @@
 package models.Item.Weapons;
 
-import utilities.Location.Location;
+import models.Buff.Buff;
 import views.Assets;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  *   Implemented by Peter Camejo
@@ -15,12 +16,12 @@ import java.awt.image.BufferedImage;
 public class TwoHand extends Weapon{
     /* Constructors */
     //No level requirement
-    public TwoHand( int id, String name , double attackRating){
-        super(1.00 , "Smasher" , Assets.twoHand , id,  name, attackRating);
+    public TwoHand( int id, String name , double attackRating, ArrayList<Buff> buffs){
+        super(1.00 , "Smasher" , Assets.twoHand , id,  name, attackRating,buffs );
     }
 
     //Level requirement
-    public TwoHand(int requiredLevel , int id,  String name , double attackRating){
-        super(1.00 , "Smasher" , requiredLevel , Assets.twoHand, id, name, attackRating);
+    public TwoHand(int requiredLevel , int id,  String name , double attackRating, ArrayList<Buff> buffs){
+        super(1.00 , "Smasher" , requiredLevel , Assets.twoHand, id, name, attackRating , buffs);
     }
 }

@@ -1,29 +1,30 @@
 package models.Item.Armors;
 
 
+import models.Buff.Buff;
 import models.Entity.Entity;
 import models.Inventory.Inventory;
 import models.Equipment.Equipment;
-import utilities.Location.Location;
 import views.Assets;
 
-import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 
 /**
  *  Implemented by Peter Camejo
  */
 public class HeadArmor extends Armor{
     /*Constructors*/
-    public HeadArmor(){
-        super(Assets.headArmor,1,"Head Armor",2,1);
+    public HeadArmor() {
+        super();
     }
 
-    public HeadArmor(int id, String name, double rating){
-        super(Assets.headArmor, id,  name ,rating);
+    public HeadArmor(int id, String name, double rating , ArrayList<Buff> buffs){
+        super(Assets.headArmor, id,  name ,rating , buffs);
     }
 
-    public HeadArmor(int id, String name, double rating , int requiredLevel){
-        super(Assets.headArmor, id,  name ,rating , requiredLevel);
+    public HeadArmor(int id, String name, double rating , int requiredLevel , ArrayList<Buff> buffs){
+        super(Assets.headArmor, id,  name ,rating , requiredLevel , buffs);
     }
 
 
@@ -36,13 +37,13 @@ public class HeadArmor extends Armor{
         */
         equipment.addHead(this);
         inventory.removeItem(id);
-        this.applyRating(entity);
+        this.applyBuffs(entity);
     }
 
     public void unequip(Entity entity, Equipment equipment, Inventory inventory) {
         inventory.addItem(this);
         equipment.removeHead();
-        this.unapplyRating(entity);
+        this.removeBuffs(entity);
     }
 
 }
