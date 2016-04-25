@@ -1,7 +1,23 @@
 package models.Buff;
 
+import models.Stat.Stat;
+
 /**
- * Created by The Alex on 4/24/2016.
+ *
  */
-public class MovementBuff {
+public class MovementBuff extends Buff {
+    /* Constructors */
+    public MovementBuff(){
+        super();
+    }
+
+    public MovementBuff(double modifier){
+        super(modifier);
+    }
+
+    /* Methods */
+    public void apply(Stat stats){
+        stats.modifyMovement(this.modifier);
+    }
 }
+

@@ -1,7 +1,22 @@
 package models.Buff;
 
+import models.Stat.Stat;
+
 /**
- * Created by The Alex on 4/24/2016.
+ *
  */
-public class IntellectBuff {
+public class IntellectBuff extends Buff {
+    /* Constructor */
+    public IntellectBuff(){
+        super();
+    }
+
+    public IntellectBuff(double modifier){
+        super(modifier);
+    }
+
+    /* Methods */
+    public void apply(Stat stats) {
+        stats.modifyIntellect(this.modifier);
+    }
 }

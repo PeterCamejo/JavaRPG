@@ -110,7 +110,7 @@ public class Stat {
         }
     }
 
-    public void modifyHardiness(double modifier){
+    public void modifyStamina(double modifier){
         if(stamina + modifier > 0){
             stamina += modifier;
         }else{
@@ -134,6 +134,7 @@ public class Stat {
         }
     }
 
+    //Current Health
     public void modifyHealth(double modifier){
         if(currentHealth + modifier < 0){
             currentHealth = 0;
@@ -144,6 +145,7 @@ public class Stat {
         }
     }
 
+    //Current Mana
     public void modifyMana(double modifier){
         if(currentMana + modifier < 0){
             currentMana = 0;

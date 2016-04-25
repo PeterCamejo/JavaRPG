@@ -1,7 +1,22 @@
 package models.Buff;
 
+import models.Stat.Stat;
+
 /**
- * Created by The Alex on 4/24/2016.
+ *
  */
-public class StaminaBuff {
+public class StaminaBuff extends Buff {
+    /* Constructor */
+    public StaminaBuff(){
+        super();
+    }
+
+    public StaminaBuff(double modifier){
+        super(modifier);
+    }
+
+    /* Methods */
+    public void apply(Stat stats){
+        stats.modifyStamina(modifier);
+    }
 }

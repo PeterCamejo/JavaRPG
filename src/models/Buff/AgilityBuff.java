@@ -1,7 +1,22 @@
 package models.Buff;
 
+import models.Stat.Stat;
+
 /**
- * Created by The Alex on 4/24/2016.
+ *
  */
-public class AgilityBuff {
+public class AgilityBuff extends Buff {
+    /* Constructor */
+    public AgilityBuff(){
+        super();
+    }
+
+    public AgilityBuff(double modifier){
+        super(modifier);
+    }
+
+    /* Methods */
+    public void apply(Stat stats){
+        stats.modifyAgility(this.modifier);
+    }
 }
