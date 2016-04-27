@@ -93,12 +93,7 @@ public class PlayStateModel{
         entityController.add(petController);
 
 
-        //mapOperator.addNewEntityAt(avatar,new Location(49,0,0));
 
-        //FlowTile ft = new FlowTile(l,10,Direction.South,getMap());
-        //mapOperator.addNewAreaEffect(ft,l);
-
-        //mapOperator.addNewEntityAt(avatar,new Location(43,4,2));
 
 
         //NPC npc = new NPC(3,new Summoner());

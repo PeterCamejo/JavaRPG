@@ -180,6 +180,10 @@ public class Stat {
         }
     }
 
+    public void levelUp(){
+        this.experience = this.expNeeded;
+    }
+
     public int getLives(){ return this.lives;}
     public double getStrength(){ return this.strength;}
     public double getAgility(){ return this.agility;}

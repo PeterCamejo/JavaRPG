@@ -1,18 +1,24 @@
 package models.AreaEffect;
 
+import models.Buff.Buff;
 import models.Entity.Entity;
-import utilities.Location.Location;
+import models.Stat.Stat;
 
-public abstract class AreaEffect {
-    Location loc;
+import java.awt.geom.Area;
 
-    public Location getLocation(){
-        return loc;
+
+public abstract class AreaEffect{
+    /* Attributes */
+    protected Buff buff;
+
+    /* Constructor */
+    public AreaEffect(){
+        buff = null;
     }
-    public void setLocation(Location l){
-        loc = l;
-    }
 
-    public abstract void execute(Entity e);
+    /* Methods */
+    public void activate(Stat stats){
+        buff.apply(stats);
+    }
 
 }
