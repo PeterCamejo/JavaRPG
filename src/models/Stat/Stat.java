@@ -26,6 +26,11 @@ public class Stat {
     private double armorRating;
     private double weaponDamage;
 
+    //Movement Privileges
+    private Boolean groundMovement;
+    private Boolean waterMovement;
+    private Boolean airMovement;
+
     /* Constructor */
     public Stat(){
         lives = 0;
@@ -39,13 +44,15 @@ public class Stat {
         weaponDamage = 0;
         level = 1;
         expNeeded = 100;
+        groundMovement = true;
+        waterMovement = airMovement = false;
 
         update();
         currentHealth = maxHealth;
         currentMana  = maxMana;
     }
     //Level 1. Meant for Avatar Creation
-    public Stat( int lives , double strength , double agility , double intellect , double stamina , double movement){
+    public Stat( int lives , double strength , double agility , double intellect , double stamina , double movement , Boolean groundMovement , Boolean waterMovement , Boolean airMovement){
         this.lives = lives;
         this.strength = strength;
         this.agility = agility;
@@ -58,6 +65,9 @@ public class Stat {
         this.level = 1;
         this.experience = 0;
         this.expNeeded = 100;
+        this.groundMovement = groundMovement;
+        this.waterMovement = waterMovement;
+        this.airMovement = airMovement;
 
         update();
         currentHealth = maxHealth;
@@ -180,6 +190,18 @@ public class Stat {
         }
     }
 
+    public void modifyGroundMovement(Boolean bool){
+        this.groundMovement = bool;
+    }
+
+    public void modifyWaterMovement(Boolean bool){
+        this.waterMovement = bool;
+    }
+
+    public void modifyAirMovement(Boolean bool){
+        this.airMovement = bool;
+    }
+
     public void levelUp(){
         this.experience = this.expNeeded;
     }
@@ -198,5 +220,8 @@ public class Stat {
     public double getDodgeRating(){ return this.dodgeRating;}
     public double getCurrentHealth(){ return this.currentHealth;}
     public double getCurrentMana(){ return this.currentMana;}
+    public Boolean getGroundMovement(){ return this.groundMovement;}
+    public Boolean getWaterMovement(){ return this.waterMovement;}
+    public Boolean getAirMovement(){ return this.airMovement;}
 
 }

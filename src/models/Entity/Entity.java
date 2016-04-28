@@ -46,6 +46,9 @@ public abstract class Entity{
     public Stat getStats(){
         return this.stats;
     }
+    public Boolean getGroundMovement(){ return stats.getGroundMovement();}
+    public Boolean getWaterMovement(){ return stats.getWaterMovement();}
+    public Boolean getAirMovement(){ return stats.getAirMovement();}
 
     /* Equipment */
     public void equip(EquipableItem item){

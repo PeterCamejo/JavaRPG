@@ -13,7 +13,7 @@ import models.Item.TakeableItem;
 
 import java.awt.image.BufferedImage;
 
-abstract class InteractiveItem extends Item {
+abstract class InteractiveItem extends Obstacle {
     /* Attributes */
     protected Requirement requirement;
 
