@@ -40,6 +40,7 @@ public class Assets {
     
     /* Interactive Item */
     public static BufferedImage itemChest;
+    public static BufferedImage door;
 
     /* Misc Items */
     public static BufferedImage chestKey;
@@ -73,9 +74,11 @@ public class Assets {
         SpriteSheet experiencePotionSheet = new SpriteSheet( new ImageLoader().loadImage("/experiencePotion.png"));
 
         SpriteSheet itemChestSheet = new SpriteSheet( new ImageLoader().loadImage("/itemChest.png"));
+        SpriteSheet doorSheet = new SpriteSheet( new ImageLoader().loadImage("/door.png"));
 
         SpriteSheet chestKeySheet = new SpriteSheet( new ImageLoader().loadImage("/chestKey.png"));
         SpriteSheet doorKeySheet = new SpriteSheet( new ImageLoader().loadImage("/doorKey.png"));
+
 
 
 
@@ -100,6 +103,7 @@ public class Assets {
         experiencePotion = experiencePotionSheet.crop(0 , 0 , width , height);
 
         itemChest = itemChestSheet.crop(0,0,width,height);
+        door = doorSheet.crop(0,0, width, height);
 
         chestKey = chestKeySheet.crop(0 ,0 , width , height);
         doorKey  = doorKeySheet.crop(0 , 0 , width , height);

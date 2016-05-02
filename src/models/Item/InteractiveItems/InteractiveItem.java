@@ -37,5 +37,10 @@ abstract class InteractiveItem extends Obstacle {
         }
 
         passReqActivation(entity);
+        makePassable();
+    }
+
+    public void makePassable(){
+        this.isPassable = true;
     }
 }

@@ -5,7 +5,9 @@ package models.Item.InteractiveItems;
 */
 
 import models.Entity.Entity;
+import models.Item.ItemFactory;
 import models.Item.Requirement;
+import views.Assets;
 
 import java.awt.image.BufferedImage;
 
@@ -15,8 +17,8 @@ public class Door extends InteractiveItem {
         super();
     }
 
-    public Door(int id, String name , Requirement requirement){
-        super(/*Assest.door*/ , id , name , requirement);
+    public Door(int id){
+        super(Assets.door, id , "Door" , ItemFactory.getDoorKey());
     }
 
     /* Methods */
