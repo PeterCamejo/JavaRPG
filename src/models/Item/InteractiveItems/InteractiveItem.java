@@ -31,13 +31,14 @@ abstract class InteractiveItem extends Obstacle {
     public abstract void passReqActivation(Entity entity);
 
     public void activate(Entity entity){
-        if(requirement.meetsRequirements(entity) == false){
+        if(requirement.meetsRequirements(entity) == true){
+            passReqActivation(entity);
+            makePassable();
+            return;
+        }else {
             System.out.println("Activation Failed : You do not have the required item " + requirement.getRequiredItemName());
             return; //do nothing
         }
-
-        passReqActivation(entity);
-        makePassable();
     }
 
     public void makePassable(){

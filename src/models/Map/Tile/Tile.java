@@ -2,6 +2,7 @@ package models.Map.Tile;
 
 import models.AreaEffect.AreaEffect;
 import models.Entity.Entity;
+import models.Item.Item;
 import models.Item.TakeableItem;
 
 /**
@@ -20,7 +21,7 @@ public abstract class Tile {
     protected Tile northWestTile;
 
     protected Entity entity;
-    protected TakeableItem item;
+    protected Item item;
     protected AreaEffect areaEffect;
 
     /* Constructor */
@@ -60,27 +61,29 @@ public abstract class Tile {
     public abstract void sendEntityNorthEast();
     public abstract void sendEntityNorthWest();
 
-    public abstract Boolean receiveEntityFromNorth(Entity entity);
-    public abstract Boolean receiveEntityFromSouth(Entity entity);
-    public abstract Boolean receiveEntityFromSouthEast(Entity entity);
-    public abstract Boolean receiveEntityFromSouthWest(Entity entity);
-    public abstract Boolean receiveEntityFromNorthEast(Entity entity);
-    public abstract Boolean receiveEntityFromNorthWest(Entity entity);
+    public abstract Boolean receiveEntity(Entity entity);
+
 
     public int getHeight(){
         return this.height;
     }
-
 
     public void update(){
         if(entity != null) {
             if (areaEffect != null) {
                 areaEffect.activate(entity.getStats());
             }
-            if (item != null) {
-                item.activate(entity);
-            }
         }
+    }
+
+    public void addItem(Item item){
+        if(this.item == null){
+            this.item = item;
+            return;
+        }
+
+        System.out.print("Can't drop that. There is already an item in this tile!");
+        return; //do nothing
     }
     
 

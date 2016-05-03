@@ -41,7 +41,7 @@ public class Requirement {
         if(requiredOccupation == null){
             return true;
         }
-        return entity.occupationName() == requiredOccupation;
+        return entity.getOccupationName() == requiredOccupation;
     }
 
     public Boolean meetsRequirements(Entity entity){

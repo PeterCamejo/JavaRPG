@@ -23,43 +23,76 @@ public class GroundTile extends Tile {
 
     /* Methods */
     public void sendEntityNorth(){
-        if(northTile.receiveEntityFromSouth(this.entity)){
+        if(northTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
     public void sendEntitySouth(){
-        if(southTile.receiveEntityFromNorth(this.entity)){
+        if(southTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
     public void sendEntityNorthEast(){
-        if(northEastTile.receiveEntityFromSouthWest(this.entity)){
+        if(northEastTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
     public void sendEntitySouthEast(){
-        if(southEastTile.receiveEntityFromNorthWest(this.entity)){
+        if(southEastTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
     public void sendEntityNorthWest(){
-        if(northWestTile.receiveEntityFromSouthEast(this.entity)){
+        if(northWestTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
     public void sendEntitySouthWest(){
-        if(southWestTile.receiveEntityFromNorthEast(this.entity)){
+        if(southWestTile.receiveEntity(this.entity)){
             this.entity = null;
         }
     }
 
-    public Boolean receiveEntityFromNorth(Entity entity){
-        if(entity.getGroundMovement() && (obstacle = null || obstacle.passable(););
+    public Boolean receiveEntity(Entity entity){
+        // Entity Check
+        if(this.entity != null){
+            return false;
         }
+
+        //Movement Requirement Check
+        if(entity.getGroundMovement() == false){
+            return false;
+        }
+
+        //Obstacle Check
+        if(this.obstacle != null){
+            obstacle.activate(entity);
+            if(obstacle.passable() == false){
+                return false;
+            }
+        }
+
+        //Activate Stuff
+        this.entity = entity;
+
+        if(this.item != null){
+            item.activate(entity);
+            item = null;
+        }
+        if(this.areaEffect != null){
+            areaEffect.activate(entity.getStats());
+        }
+
+        return true;
+
+
+
+
+
     }
 }

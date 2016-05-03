@@ -3,7 +3,7 @@ package models.Entity;
 
 import models.Item.EquipableItem;
 import models.Item.TakeableItem;
-import models.Map.Tile;
+import models.Map.Tile.*;
 import models.SkillContainer.SkillContainer;
 import models.Stat.Stat;
 
@@ -49,10 +49,16 @@ public abstract class Entity{
     public Boolean getGroundMovement(){ return stats.getGroundMovement();}
     public Boolean getWaterMovement(){ return stats.getWaterMovement();}
     public Boolean getAirMovement(){ return stats.getAirMovement();}
+    public int getLevel(){ return stats.getLevel();}
 
     /* Equipment */
     public void equip(EquipableItem item){
         item.equip(this , this.equipment , this.inventory);
+    }
+
+    /* Occupation */
+    public String getOccupationName(){
+        return this.occupation;
     }
 
 
