@@ -23,6 +23,6 @@ public class Door extends InteractiveItem {
 
     /* Methods */
     public void passReqActivation(Entity entity){
-         this.image = /* Same as background */;
+         //this.image = /* Same as background */;
     }
 }

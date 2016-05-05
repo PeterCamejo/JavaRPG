@@ -7,8 +7,4 @@ import models.Entity.Avatar;
  */
 public class EntityFactory {
 
-
-    public static getSneak(){
-        return new Avatar();
-    }
 }

@@ -35,6 +35,7 @@ public abstract class Entity{
     /*** Methods ***/
     /* Inventory */
     public Inventory getInventory(){ return this.inventory;}
+    public void addItem(TakeableItem item){ inventory.addItem(item);}
     public void dropItem(TakeableItem item){
         currentTile.addItem(inventory.removeItem(item.getId()));
     }
