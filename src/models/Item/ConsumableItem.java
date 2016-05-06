@@ -26,7 +26,7 @@ public class ConsumableItem extends TakeableItem {
     /* Methods */
     public void use(Entity entity){
         buff.apply(entity.getStats());
-        entity.destroyItem(this);
+        entity.destroyItem(this.id);
     }
 
 }

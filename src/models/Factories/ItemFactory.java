@@ -1,4 +1,4 @@
-package models.Item;
+package models.Factories;
 
 import models.Item.Weapons.*;
 import models.Item.Armors.*;
@@ -75,6 +75,7 @@ public class ItemFactory {
 
     /** Methods **/
     /* Weapons */
+    /*
     public static OneHand getBasicOneHand(){return new OneHand(BASIC_ONEHAND , "Basic 1H Sword" , 5.00);}
     public static TwoHand getBasicTwoHand(){return new TwoHand(BASIC_TWOHAND , "Basic 2H AXE" , 10.00);}
     public static Fist getBasicFist(){return new Fist(BASIC_FIST, "Basic Fist" , 2.50);}
@@ -87,7 +88,7 @@ public class ItemFactory {
     public static Ranged getPowerfulRanged(){ return new Ranged(5, POWERFUL_RANGED , "Powerful Bow" , 15.00);}
     public static Staff getPowerfulStaff(){ return new Staff(5, POWERFUL_STAFF , "Powerful Staff" , 7.50);}
 
-    /* Armor */
+    /* Armor
     public static HeadArmor getBasicHeadArmor(){ return new HeadArmor (BASIC_HEAD_ARMOR , "Basic Helm" , 5.00);}
     public static ChestArmor getBasicChestArmor(){ return new ChestArmor (BASIC_CHEST_ARMOR , "Basic Chestpiece" , 10.00);}
     public static LegArmor getBasicLegArmor(){ return new LegArmor(BASIC_LEG_ARMOR , "Basic Legpieces" , 10.00);}
@@ -102,7 +103,7 @@ public class ItemFactory {
     public static BootArmor getPowerfulBootArmor(){ return new BootArmor(POWERFUL_BOOT_ARMOR , "Powerful Boots" , 15.00 , 5);}
     public static Trinket getPowerfulTrinket(){ return new Trinket(POWERFUL_TRINKET , "Powerful Trinket", 7.50 , 5);}
 
-    /* Potions */
+    /* Potions
     public static ConsumableItem getHealthPotion(){ return new ConsumableItem("CurrentLife" , 10 , Assets.healthPotion , HEALTH_POTION , "Health Potion" );}
     public static ConsumableItem getManaPotion(){ return new ConsumableItem("CurrentMana" , 10 , Assets.manaPotion , MANA_POTION , "Mana Potion");}
     public static ConsumableItem getStrengthPotion(){ return new ConsumableItem("Strength" , 20 , Assets.strengthPotion , STRENGTH_POTION , "Strength Potion");}
@@ -110,7 +111,8 @@ public class ItemFactory {
     public static ConsumableItem getAgilityPotion(){ return new ConsumableItem("Agility" , 20, Assets.agilityPotion , AGILITY_POTION , "Agility Potion");}
     public static ConsumableItem getExperiencePotion(){ return new ConsumableItem("Experience" , 20 , Assets.experiencePotion , EXPERIENCE_POTION , "Experience Potion");}
 
-    /* Interactive Items */
+
+    /* Interactive Items
     public static Chest getItemChest(){
         Random rand = new Random();
         TakeableItem[] loot = new TakeableItem[3];
@@ -143,7 +145,7 @@ public class ItemFactory {
 
         return new Chest(Assets.itemChest , ITEM_CHEST , "Item Chest" , getChestKey() , loot , rand.nextInt(51));
     }
-
+*/
     /* Misc Items */
     public static MiscItem getChestKey(){return new MiscItem(Assets.chestKey , CHEST_KEY , "Item Chest Key");}
     public static MiscItem getDoorKey(){ return new MiscItem(Assets.doorKey  , DOOR_KEY , "Door Key");}

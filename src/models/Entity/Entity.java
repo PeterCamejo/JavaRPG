@@ -4,7 +4,7 @@ package models.Entity;
 import models.Item.EquipableItem;
 import models.Item.TakeableItem;
 import models.Map.Tile.*;
-import models.SkillContainer.SkillContainer;
+
 import models.Stat.Stat;
 
 import models.Inventory.Inventory;
@@ -19,7 +19,7 @@ public abstract class Entity{
     protected Inventory inventory;
     protected Equipment equipment;
     protected Tile currentTile;
-    protected SkillContainer skills;
+
 
     /* Constructor */
     public Entity(){
@@ -29,7 +29,7 @@ public abstract class Entity{
         inventory = null;
         equipment = null;
         currentTile = null;
-        skills = null;
+
     }
 
     /*** Methods ***/
@@ -39,9 +39,7 @@ public abstract class Entity{
     public void dropItem(TakeableItem item){
         currentTile.addItem(inventory.removeItem(item.getId()));
     }
-    public void destroyItem(TakeableItem item){
-        inventory.removeItem(item.getId());
-    }
+    public void destroyItem(int id){inventory.removeItem(id);}
 
     /* Stats */
     public Stat getStats(){

@@ -5,7 +5,7 @@ package models.Item.InteractiveItems;
 */
 
 import models.Entity.Entity;
-import models.Item.ItemFactory;
+import models.Factories.ItemFactory;
 import models.Item.Requirement;
 import views.Assets;
 
