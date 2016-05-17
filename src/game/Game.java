@@ -1,5 +1,8 @@
 package game;
 
+import models.States.GameStateManager;
+import models.States.PlayState;
+import models.States.State;
 import views.Assets;
 import views.Display;
 
@@ -22,6 +25,9 @@ public class Game implements Runnable{
     private BufferStrategy bufferStrategy;
     private Graphics g;
 
+    //States
+    private State gameState;
+
     //Test
     int x = 0;
 
@@ -35,11 +41,16 @@ public class Game implements Runnable{
 
     public void init(){
         display = new Display(title, width, height);
+        Assets.init();
+
+        gameState = new PlayState();
+        GameStateManager.setState(gameState);
     }
 
     private void tick(){
-        //Test
-        x++;
+        if(GameStateManager.getState() != null){
+            GameStateManager.tickCurrentState();
+        }
     }
 
     private void render(){
@@ -52,11 +63,9 @@ public class Game implements Runnable{
         g = bufferStrategy.getDrawGraphics();
         g.clearRect(0 , 0 , width , height);
 
-
-        g.setColor(Color.CYAN);
-        g.fillRect(x , 40 , 50 , 50);
-
-
+        if(GameStateManager.getState() != null){
+            GameStateManager.renderCurrentState(g);
+        }
 
         bufferStrategy.show();
         g.dispose();

@@ -32,7 +32,7 @@ public class HeadArmor extends Armor{
     public void equip(Entity entity, Equipment equipment , Inventory inventory) {
         /*
         if(equipment.hasHead()){
-            equipment.getHead().unequip(equipment , inventory); //NOT OOP. Should probably do this within models.Equipment State
+            equipment.getHead().unequip(equipment , inventory); //NOT OOP. Should probably do this within models.Equipmen
         }
         */
         equipment.addHead(this);
