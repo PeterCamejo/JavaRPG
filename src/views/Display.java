@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 /**
  * Made using resources from CodeNMore (https://www.youtube.com/channel/UCaM7SQvF5q9sz4NgL16PNRA)
@@ -24,11 +25,11 @@ public class Display {
 
     private void createDisplay(){
         frame = new JFrame(title);
+        frame.setVisible(true);
         frame.setSize(width , height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
 
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width, height));
@@ -37,6 +38,18 @@ public class Display {
 
         frame.add(canvas);
         frame.pack();
-
     };
+
+    public Canvas getCanvas(){
+        return canvas;
+    }
+
+    public BufferStrategy getCanvasBufferStrategy(){
+        return canvas.getBufferStrategy();
+    }
+
+    public void createCanvasBufferStrategy(int numBuffers){
+        canvas.createBufferStrategy(numBuffers);
+        return;
+    }
 }

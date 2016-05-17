@@ -1,14 +1,12 @@
 package game;
 
-import views.Display;
-
 /**
- *
+ *  Responsible for instantiating the game and running it.
  */
 public class Launcher {
     public static void main (String args[]){
         Game game = new Game("JavaRPG" , 750 , 750);
-        game.run();
+        game.start();
         return;
     }
 }
