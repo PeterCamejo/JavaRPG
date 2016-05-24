@@ -31,6 +31,6 @@ public class Location {
     public void setZ(float z){this.z = z;}
 
     public void modifyX(float modification){x += modification;}
-    public void modifyY(float modification){y += modification;}
+    public void modifyY(float modification){y -= modification;}
     public void modifyZ(float modification){z += modification;}
 }

@@ -1,5 +1,7 @@
 package models.States;
 
+import game.Game;
+
 import java.awt.*;
 
 /**
@@ -8,10 +10,13 @@ import java.awt.*;
 public class GameStateManager {
     /* Attributes */
     private static State currentState = null;
+    private static Game game;
 
     /* Methods */
     public static void setState(State state){
         currentState = state;
+        game.clearKeyListener();
+        game.setKeyListener(state.getKeyManager());
     }
 
     public static State getState(){
@@ -24,5 +29,9 @@ public class GameStateManager {
 
     public static void renderCurrentState(Graphics g){
         currentState.render(g);
+    }
+
+    public static void setGame(Game newGame){
+        game = newGame;
     }
 }

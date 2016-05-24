@@ -85,6 +85,18 @@ public abstract class Entity{
 
     }
 
+    /* Movement */
+    public void moveNorth(){currentTile.sendEntityNorth();}
+    public void moveNorthEast(){currentTile.sendEntityNorthEast();}
+    public void moveNorthWest(){currentTile.sendEntityNorthWest();}
+    public void moveSouth(){ currentTile.sendEntitySouth();}
+    public void moveSouthEast(){ currentTile.sendEntitySouthEast();}
+    public void moveSouthWest(){ currentTile.sendEntitySouthWest();}
+
+    /* Test Movement */
+    public void testUp(){ location.modifyY(3);}
+    public void testDown(){ location.modifyY(-3);}
+
 
 
 }

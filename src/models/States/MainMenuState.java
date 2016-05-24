@@ -6,11 +6,13 @@ import java.awt.*;
 /**
  * Created by The Alex on 5/22/2016.
  */
+/*
 public class MainMenuState extends State {
-    /* Constructors */
+
+    /* Constructors
     public MainMenuState(){};
 
-    /* Methods */
+    /* Methods
 
     public void tick(){
 
@@ -20,3 +22,5 @@ public class MainMenuState extends State {
 
     }
 }
+
+*/

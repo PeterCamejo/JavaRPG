@@ -1,9 +1,10 @@
 package game;
 
 import input.KeyManager;
+import input.PlayKeyManager;
 import models.Entity.Avatar;
 import models.States.GameStateManager;
-import models.States.MainMenuState;
+
 import models.States.PlayState;
 import models.States.State;
 import views.Assets;
@@ -44,24 +45,23 @@ public class Game implements Runnable{
         this.height =   height;
         this.title = title;
         running = false;
-        keyManager = new KeyManager();
+        keyManager = new PlayKeyManager();
     }
 
     public void init(){
+        GameStateManager.setGame(this);
         display = new Display(title, width, height);
         display.addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new PlayState();
-        mainMenuState = new MainMenuState();
+        gameState = new PlayState(new Avatar() , new PlayKeyManager());
+        mainMenuState = new PlayState();
         GameStateManager.setState(gameState);
 
 
     }
 
     private void tick(){
-        keyManager.tick();
-
         if(GameStateManager.getState() != null){
             GameStateManager.tickCurrentState();
         }
@@ -139,5 +139,26 @@ public class Game implements Runnable{
         }catch(Exception e){
             e.printStackTrace();
         }
-};
+    }
+
+    public void setKeyListener(KeyManager keyManager){
+        this.keyManager = keyManager;
+        display.addKeyListener(keyManager);
+    }
+
+    public void clearKeyListener(){
+        display.removeKeyListener(keyManager);
+    }
+
+    public KeyManager getKeyManager(){
+        return this.keyManager;
+    }
+
+    public boolean hasKeyManager(){
+        if(keyManager == null){
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -10,10 +10,9 @@ import java.awt.event.KeyListener;
 /**
  * Created by The Alex on 5/22/2016.
  */
-public class KeyManager implements KeyListener {
+public abstract class KeyManager implements KeyListener {
     /* Attributes */
-    private boolean[] keys;
-    public boolean up , down, left, right;
+    protected boolean[] keys;
 
     /* Constructor */
     public KeyManager(){
@@ -32,10 +31,5 @@ public class KeyManager implements KeyListener {
 
     }
 
-    public void tick(){
-        up = keys[KeyEvent.VK_W];
-        down = keys[KeyEvent.VK_S];
-        left = keys[KeyEvent.VK_A];
-        right = keys[KeyEvent.VK_D];
-    }
+    public abstract void tick();
 }

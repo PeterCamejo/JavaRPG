@@ -58,5 +58,6 @@ public class Display {
     public void addKeyListener(KeyListener keyListener){
         frame.addKeyListener(keyListener);
     }
+    public void removeKeyListener(KeyListener keyListener){ frame.removeKeyListener(keyListener);}
 
 }
