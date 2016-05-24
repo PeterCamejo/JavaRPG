@@ -3,12 +3,16 @@ package models.Entity;
 
 import models.Item.EquipableItem;
 import models.Item.TakeableItem;
+import models.Location;
 import models.Map.Tile.*;
 
 import models.Stat.Stat;
 
 import models.Inventory.Inventory;
 import models.Equipment.Equipment;
+import views.Assets;
+
+import java.awt.*;
 
 
 public abstract class Entity{
@@ -19,17 +23,29 @@ public abstract class Entity{
     protected Inventory inventory;
     protected Equipment equipment;
     protected Tile currentTile;
+    protected Location location;
 
 
     /* Constructor */
     public Entity(){
-        name = null;
-        occupation = null;
-        stats = null;
-        inventory = null;
-        equipment = null;
-        currentTile = null;
+        name = "";
+        occupation = "";
+        stats = new Stat();
+        inventory = new Inventory();
+        equipment = new Equipment();
+        currentTile = new GroundTile();
+        location = new Location();
 
+    }
+
+    public Entity(String name , String occupation , Stat stats, Inventory inventory , Equipment equipment , Tile currentTile , Location location){
+        this.name = name;
+        this.occupation = occupation;
+        this.stats = stats;
+        this.inventory = inventory;
+        this.equipment = equipment;
+        this.currentTile = currentTile;
+        this.location = location;
     }
 
     /*** Methods ***/
@@ -58,6 +74,15 @@ public abstract class Entity{
     /* Occupation */
     public String getOccupationName(){
         return this.occupation;
+    }
+
+    /* Loop */
+    public void render(Graphics g){
+        g.drawImage(Assets.healthPotion, (int) location.getX() , (int) location.getY() , null);
+    }
+
+    public void tick(){
+
     }
 
 

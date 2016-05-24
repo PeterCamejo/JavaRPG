@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 /**
@@ -35,6 +36,7 @@ public class Display {
         canvas.setPreferredSize(new Dimension(width, height));
         canvas.setMaximumSize(new Dimension(width,height));
         canvas.setMinimumSize(new Dimension(width,height));
+        canvas.setFocusable(false);
 
         frame.add(canvas);
         frame.pack();
@@ -52,4 +54,9 @@ public class Display {
         canvas.createBufferStrategy(numBuffers);
         return;
     }
+
+    public void addKeyListener(KeyListener keyListener){
+        frame.addKeyListener(keyListener);
+    }
+
 }

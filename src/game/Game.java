@@ -1,6 +1,9 @@
 package game;
 
+import input.KeyManager;
+import models.Entity.Avatar;
 import models.States.GameStateManager;
+import models.States.MainMenuState;
 import models.States.PlayState;
 import models.States.State;
 import views.Assets;
@@ -27,6 +30,10 @@ public class Game implements Runnable{
 
     //States
     private State gameState;
+    private State mainMenuState;
+
+    //Input
+    private KeyManager keyManager;
 
     //Test
     int x = 0;
@@ -37,17 +44,24 @@ public class Game implements Runnable{
         this.height =   height;
         this.title = title;
         running = false;
+        keyManager = new KeyManager();
     }
 
     public void init(){
         display = new Display(title, width, height);
+        display.addKeyListener(keyManager);
         Assets.init();
 
         gameState = new PlayState();
+        mainMenuState = new MainMenuState();
         GameStateManager.setState(gameState);
+
+
     }
 
     private void tick(){
+        keyManager.tick();
+
         if(GameStateManager.getState() != null){
             GameStateManager.tickCurrentState();
         }
