@@ -1,10 +1,12 @@
 package game;
 
 import input.KeyManager;
+import input.MenuKeyManager;
 import input.PlayKeyManager;
 import models.Entity.Avatar;
 import models.States.GameStateManager;
 
+import models.States.MainMenuState;
 import models.States.PlayState;
 import models.States.State;
 import views.Assets;
@@ -55,8 +57,8 @@ public class Game implements Runnable{
         Assets.init();
 
         gameState = new PlayState(new Avatar() , new PlayKeyManager());
-        mainMenuState = new PlayState();
-        GameStateManager.setState(gameState);
+        mainMenuState = new MainMenuState(new MenuKeyManager());
+        GameStateManager.setState(mainMenuState);
 
 
     }
@@ -148,6 +150,10 @@ public class Game implements Runnable{
 
     public void clearKeyListener(){
         display.removeKeyListener(keyManager);
+    }
+
+    public PlayState getGameState(){
+        return (PlayState) gameState;
     }
 
     public KeyManager getKeyManager(){

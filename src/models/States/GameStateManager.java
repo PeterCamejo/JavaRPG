@@ -34,4 +34,8 @@ public class GameStateManager {
     public static void setGame(Game newGame){
         game = newGame;
     }
+
+    public static void setGameState(){
+        setState(game.getGameState());
+    }
 }
