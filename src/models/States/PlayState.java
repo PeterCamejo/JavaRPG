@@ -3,6 +3,8 @@ package models.States;
 import input.KeyManager;
 import input.PlayKeyManager;
 import models.Entity.Avatar;
+import models.Location;
+import models.Map.Map;
 
 
 import java.awt.*;
@@ -14,6 +16,7 @@ public class PlayState extends State {
     /* Attributes */
     private Avatar player;
     private PlayKeyManager keyManager;
+    private Map gameMap;
 
     /* Constructors*/
     public PlayState(){
@@ -23,6 +26,7 @@ public class PlayState extends State {
     public PlayState(Avatar player , PlayKeyManager keyManager){
         this.player = player;
         this.keyManager = keyManager;
+        gameMap = new Map(player);
     }
 
 
@@ -31,13 +35,27 @@ public class PlayState extends State {
         keyManager.tick();
 
         if( keyManager.north){
-            player.testUp();
+            player.testNorth();
         }
         if(keyManager.south){
-            player.testDown();
+            player.testSouth();
+        }
+        if(keyManager.northEast){
+            player.testNorthEast();
+        }
+        if(keyManager.northWest){
+            player.testNorthWest();
+        }
+        if(keyManager.southEast){
+            player.testSouthEast();
+        }
+        if(keyManager.southWest){
+            player.testSouthWest();
         }
     }
+
     public void render(Graphics g){
+        gameMap.render(g);
         player.render(g);
     }
 

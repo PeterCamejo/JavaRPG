@@ -1,6 +1,8 @@
 package views;
 
 
+import models.Buff.Buff;
+
 import java.awt.image.BufferedImage;
 
 
@@ -46,6 +48,8 @@ public class Assets {
     public static BufferedImage chestKey;
     public static BufferedImage doorKey;
 
+    //Test Images
+    public static BufferedImage TestHexagon;
     public static BufferedImage BGIMAGE;
 
 
@@ -78,6 +82,9 @@ public class Assets {
 
         SpriteSheet chestKeySheet = new SpriteSheet( new ImageLoader().loadImage("/chestKey.png"));
         SpriteSheet doorKeySheet = new SpriteSheet( new ImageLoader().loadImage("/doorKey.png"));
+
+        //Test SpriteSheets
+        SpriteSheet testHexagonSheet = new SpriteSheet( new ImageLoader().loadImage("/TestGround.png"));
 
 
 
@@ -114,6 +121,8 @@ public class Assets {
         airTerrain = DrawTerrainImages.getAirImage();
         */
 
+        //Test
         BGIMAGE = new ImageLoader().loadImage("/BackGround.jpg");
+        TestHexagon = testHexagonSheet.crop(0 , 0 , width + 20 , height + 20);
     }
 }

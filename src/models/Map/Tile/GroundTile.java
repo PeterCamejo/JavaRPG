@@ -4,6 +4,11 @@ import models.AreaEffect.AreaEffect;
 import models.Entity.Entity;
 import models.Item.InteractiveItems.Obstacle;
 import models.Item.TakeableItem;
+import models.Location;
+import views.Assets;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by The Alex on 4/21/2016.
@@ -19,6 +24,15 @@ public class GroundTile extends Tile {
 
     public GroundTile(Tile bottomTile , Tile topTile , Tile northTile , Tile southTile , Tile southEastTile , Tile southWestTile , Tile northEastTile , Tile northWestTile , Entity entity , TakeableItem item , AreaEffect areaEffect){
         super(bottomTile , topTile , northTile , southTile , southEastTile , southWestTile ,  northEastTile , northWestTile ,entity ,item , areaEffect);
+    }
+
+    public GroundTile(Entity entity , TakeableItem item , AreaEffect areaEffect , Obstacle obstacle , Location location){
+        this.entity = entity;
+        this.item = item;
+        this.areaEffect = areaEffect;
+        this.obstacle = obstacle;
+        this.location = location;
+        terrainImage = Assets.TestHexagon;
     }
 
     /* Methods */
@@ -89,10 +103,14 @@ public class GroundTile extends Tile {
         }
 
         return true;
+    }
 
-
-
-
+    public void render(Graphics g){
+        int multiplier = 100;
+        g.drawImage(terrainImage , (int) location.getX() * multiplier , (int) location.getY() * multiplier , null);
+        if(item != null){
+            g.drawImage(item.getImage() , (int) location.getX() * multiplier , (int) location.getY() * multiplier , null );
+        }
 
     }
 }

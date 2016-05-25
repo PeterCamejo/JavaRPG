@@ -33,7 +33,7 @@ public abstract class Item {
     public int getId(){
         return this.id;
     }
-    public BufferedImage getImage (){ return this.image;}
+    public BufferedImage getImage (){ return image;}
     public String getName(){ return this.name;}
 
 }

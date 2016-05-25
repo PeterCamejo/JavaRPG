@@ -2,8 +2,13 @@ package models.Map.Tile;
 
 import models.AreaEffect.AreaEffect;
 import models.Entity.Entity;
+import models.Item.InteractiveItems.Obstacle;
 import models.Item.Item;
 import models.Item.TakeableItem;
+import models.Location;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -23,6 +28,9 @@ public abstract class Tile {
     protected Entity entity;
     protected Item item;
     protected AreaEffect areaEffect;
+
+    protected BufferedImage terrainImage;
+    protected Location location;
 
     /* Constructor */
     public Tile(){
@@ -47,22 +55,34 @@ public abstract class Tile {
         this.item = item;
         this.areaEffect = areaEffect;
 
+        terrainImage = null;
+        location = null;
+
         if(bottomTile != null){
             this.height = bottomTile.getHeight() + 1;
         }else{
             this.height = 1;
         }
     }
+
+    public Tile(Entity entity , TakeableItem item , AreaEffect areaEffect , Location location){
+        this.entity  = entity;
+        this.item = item;
+        this.areaEffect = areaEffect;
+        this.location = location;
+    }
+
     /* Methods */
+    /*
     public abstract void sendEntityNorth();
     public abstract void sendEntitySouth();
     public abstract void sendEntitySouthEast();
     public abstract void sendEntitySouthWest();
     public abstract void sendEntityNorthEast();
     public abstract void sendEntityNorthWest();
-
+    */
     public abstract Boolean receiveEntity(Entity entity);
-
+    public abstract void render(Graphics g);
 
     public int getHeight(){
         return this.height;
@@ -85,6 +105,9 @@ public abstract class Tile {
         System.out.print("Can't drop that. There is already an item in this tile!");
         return; //do nothing
     }
-    
+
+    public Location getLocation(){
+        return location;
+    }
 
 }
