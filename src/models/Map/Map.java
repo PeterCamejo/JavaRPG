@@ -26,9 +26,9 @@ public class Map {
     /* Methods */
     public void init() {
         tiles = new Tile[256];
-          tiles[0] = new GroundTile(null, null, null, null , new Location(0 , 0 , 0));
-          tiles[1] = new GroundTile(null , null , null , null , new Location(0 , 1, 0));
-          tiles[2] = new GroundTile(null , ItemFactory.getChestKey(), null , null , new Location(1,0,0));
+          tiles[0] = new GroundTile(null, null, null, null , new Location(20 ,20 , 0));
+          tiles[1] = new GroundTile(null , null , null , null , new Location(40 , 40, 0));
+          tiles[2] = new GroundTile(null , ItemFactory.getChestKey(), null , null , new Location(60,60,0));
 
     }
 

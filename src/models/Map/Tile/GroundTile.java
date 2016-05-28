@@ -5,6 +5,7 @@ import models.Entity.Entity;
 import models.Item.InteractiveItems.Obstacle;
 import models.Item.TakeableItem;
 import models.Location;
+import models.Map.Hexagon;
 import views.Assets;
 
 import java.awt.*;
@@ -32,7 +33,9 @@ public class GroundTile extends Tile {
         this.areaEffect = areaEffect;
         this.obstacle = obstacle;
         this.location = location;
-        terrainImage = Assets.TestHexagon;
+
+        hexagon = new Hexagon(location , 20);
+
     }
 
     /* Methods */
@@ -106,10 +109,9 @@ public class GroundTile extends Tile {
     }
 
     public void render(Graphics g){
-        int multiplier = 100;
-        g.drawImage(terrainImage , (int) location.getX() * multiplier , (int) location.getY() * multiplier , null);
+        g.drawImage(hexagon.getImage() , (int) location.getX(), (int) location.getY() , null);
         if(item != null){
-            g.drawImage(item.getImage() , (int) location.getX() * multiplier , (int) location.getY() * multiplier , null );
+            g.drawImage(item.getImage() , (int) location.getX(), (int) location.getY()  , null );
         }
 
     }

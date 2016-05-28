@@ -6,6 +6,7 @@ import models.Item.InteractiveItems.Obstacle;
 import models.Item.Item;
 import models.Item.TakeableItem;
 import models.Location;
+import models.Map.Hexagon;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,7 +30,7 @@ public abstract class Tile {
     protected Item item;
     protected AreaEffect areaEffect;
 
-    protected BufferedImage terrainImage;
+    protected Hexagon hexagon;
     protected Location location;
 
     /* Constructor */
@@ -55,7 +56,6 @@ public abstract class Tile {
         this.item = item;
         this.areaEffect = areaEffect;
 
-        terrainImage = null;
         location = null;
 
         if(bottomTile != null){
@@ -70,6 +70,8 @@ public abstract class Tile {
         this.item = item;
         this.areaEffect = areaEffect;
         this.location = location;
+
+        hexagon = new Hexagon(location , 20);
     }
 
     /* Methods */
