@@ -33,13 +33,13 @@ public class Stat {
 
     /* Constructor */
     public Stat(){
-        lives = 0;
+        lives = 1;
         strength = 0;
         agility = 0;
         intellect = 0;
         stamina = 0;
         experience = 0;
-        movement = 0;
+        movement = 3;
         armorRating = 0;
         weaponDamage = 0;
         level = 1;

@@ -2,46 +2,35 @@ package models.Map.Tile;
 
 import models.AreaEffect.AreaEffect;
 import models.Entity.Entity;
-import models.Item.InteractiveItems.Obstacle;
 import models.Item.Item;
 import models.Item.TakeableItem;
 import models.Location;
-import models.Map.Hexagon;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  *
  */
 public abstract class Tile {
     /* Attributes */
-    protected int height;
-    protected Tile bottomTile;
-    protected Tile topTile;
-    protected Tile northTile;
-    protected Tile southTile;
-    protected Tile southEastTile;
-    protected Tile northEastTile;
-    protected Tile southWestTile;
-    protected Tile northWestTile;
+    protected int tileSize;
+
 
     protected Entity entity;
     protected Item item;
     protected AreaEffect areaEffect;
 
-    protected Hexagon hexagon;
+
     protected Location location;
 
     /* Constructor */
     public Tile(){
-        height = 1;
-        bottomTile = topTile = northTile =southTile = southEastTile =southWestTile = northEastTile = northWestTile = null;
         entity = null;
         item = null;
         areaEffect = null;
+        tileSize = 0;
     }
-
+/*
     public Tile(Tile bottomTile , Tile topTile , Tile northTile , Tile southTile , Tile southEastTile , Tile southWestTile , Tile northEastTile , Tile northWestTile , Entity entity , TakeableItem item , AreaEffect areaEffect){
         this.bottomTile = bottomTile;
         this.topTile = topTile;
@@ -64,37 +53,28 @@ public abstract class Tile {
             this.height = 1;
         }
     }
+    */
 
-    public Tile(Entity entity , TakeableItem item , AreaEffect areaEffect , Location location){
+    public Tile(Entity entity , TakeableItem item , AreaEffect areaEffect , Location location, int tileSize){
         this.entity  = entity;
         this.item = item;
         this.areaEffect = areaEffect;
         this.location = location;
+        this.tileSize = tileSize;
 
-        hexagon = new Hexagon(location , 20);
     }
 
     /* Methods */
-    /*
-    public abstract void sendEntityNorth();
-    public abstract void sendEntitySouth();
-    public abstract void sendEntitySouthEast();
-    public abstract void sendEntitySouthWest();
-    public abstract void sendEntityNorthEast();
-    public abstract void sendEntityNorthWest();
-    */
+    public abstract boolean isPassable();
     public abstract Boolean receiveEntity(Entity entity);
     public abstract void render(Graphics g);
 
-    public int getHeight(){
-        return this.height;
-    }
-
-    public void update(){
+    public void tick(){
         if(entity != null) {
             if (areaEffect != null) {
                 areaEffect.activate(entity.getStats());
             }
+
         }
     }
 
@@ -110,6 +90,14 @@ public abstract class Tile {
 
     public Location getLocation(){
         return location;
+    }
+
+    public void clearEntity(){
+        this.entity = null;
+    }
+
+    public void setItem(Item item){
+        this.item = item;
     }
 
 }

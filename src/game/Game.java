@@ -41,6 +41,7 @@ public class Game implements Runnable{
     //Test
     int x = 0;
 
+
     /* Constructor */
     public Game(String title , int width, int height){
         this.width =    width;

@@ -4,6 +4,7 @@ import models.Equipment.Equipment;
 import models.Inventory.Inventory;
 import models.Location;
 import models.Map.Tile.Tile;
+import models.Movement;
 import models.Stat.Stat;
 
 /**
@@ -15,8 +16,8 @@ public class Avatar extends Entity {
         super();
     }
 
-    public Avatar(String name , String occupation , Stat stats, Inventory inventory , Equipment equipment , Tile currentTile , Location location){
-        super(name, occupation, stats , inventory, equipment ,currentTile ,location);
+    public Avatar(String name , String occupation , Stat stats, Inventory inventory , Equipment equipment , Tile currentTile , Location location , Movement movement){
+        super(name, occupation, stats , inventory, equipment ,currentTile ,location , movement);
     }
 
 

@@ -36,16 +36,18 @@ public class Inventory implements ItemContainer {
 
     /* Methods */
 
-    public void addItem(TakeableItem item) {
+    public boolean addItem(TakeableItem item) {
 
         for(int i = 0; i < size; i++){
             if(items[i] == null){
                 items[i] = item;
-                return;
+                return true;
             }
         }
 
-        System.out.println("Take models.Item failed: models.Inventory full.");
+        System.out.println("Take Item failed: Inventory full.");
+
+        return false;
     }
 
     public boolean isFull(){

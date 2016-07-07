@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
  */
 public class PlayKeyManager extends KeyManager {
     /* Attributes */
-    public boolean north, south, northEast, northWest, southWest, southEast;
+    public boolean north, south, east, west;
 
     /* Constructor */
     public PlayKeyManager(){
@@ -19,11 +19,9 @@ public class PlayKeyManager extends KeyManager {
 
     /* Methods */
     public void tick(){
-        north = keys[KeyEvent.VK_NUMPAD8];
-        south = keys[KeyEvent.VK_NUMPAD5];
-        northEast = keys[KeyEvent.VK_NUMPAD9];
-        northWest = keys[KeyEvent.VK_NUMPAD7];
-        southEast = keys[KeyEvent.VK_NUMPAD6];
-        southWest = keys[KeyEvent.VK_NUMPAD4];
+        north = keys[KeyEvent.VK_UP];
+        south = keys[KeyEvent.VK_DOWN];
+        east = keys[KeyEvent.VK_RIGHT];
+        west = keys[KeyEvent.VK_LEFT];
     }
 }

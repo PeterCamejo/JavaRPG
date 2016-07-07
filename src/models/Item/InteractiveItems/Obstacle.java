@@ -25,10 +25,11 @@ public class Obstacle extends Item {
 
     /* Methods */
     public Boolean passable(){
-        return this.isPassable;
+        return isPassable;
     }
 
     public void activate(Entity entity){
+        System.out.println("An Obstacle blocks your path");
         return;
     }
 }

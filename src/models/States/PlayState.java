@@ -5,6 +5,7 @@ import input.PlayKeyManager;
 import models.Entity.Avatar;
 import models.Location;
 import models.Map.Map;
+import models.Movement;
 
 
 import java.awt.*;
@@ -17,16 +18,23 @@ public class PlayState extends State {
     private Avatar player;
     private PlayKeyManager keyManager;
     private Map gameMap;
+    private int tileSize;
+    private int mapSize;
 
     /* Constructors*/
     public PlayState(){
         super();
     }
 
-    public PlayState(Avatar player , PlayKeyManager keyManager){
+    public PlayState(Avatar player , PlayKeyManager keyManager) {
+        tileSize = 32;
+        mapSize = 30;
+
         this.player = player;
         this.keyManager = keyManager;
-        gameMap = new Map(player);
+        gameMap = new Map(player, tileSize, mapSize);
+
+        player.setMovement(new Movement(player, gameMap));
     }
 
 
@@ -34,23 +42,17 @@ public class PlayState extends State {
     public void tick(){
         keyManager.tick();
 
-        if( keyManager.north){
-            player.testNorth();
+        if( keyManager.north) {
+            player.moveNorth();
         }
         if(keyManager.south){
-            player.testSouth();
+            player.moveSouth();
         }
-        if(keyManager.northEast){
-            player.testNorthEast();
+        if(keyManager.east){
+            player.moveEast();
         }
-        if(keyManager.northWest){
-            player.testNorthWest();
-        }
-        if(keyManager.southEast){
-            player.testSouthEast();
-        }
-        if(keyManager.southWest){
-            player.testSouthWest();
+        if(keyManager.west){
+            player.moveWest();
         }
     }
 

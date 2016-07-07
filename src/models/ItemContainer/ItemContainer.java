@@ -11,7 +11,7 @@ public interface ItemContainer {
     int DEFAULT_SIZE = 15;
 
     /* Methods */
-    void addItem(TakeableItem item);
+    boolean addItem(TakeableItem item);
     TakeableItem removeItem(int id);
     TakeableItem removeItemByIndex(int index);
     TakeableItem getItemByIndex(int index);

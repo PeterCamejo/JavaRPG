@@ -5,11 +5,8 @@ import models.Entity.Entity;
 import models.Item.InteractiveItems.Obstacle;
 import models.Item.TakeableItem;
 import models.Location;
-import models.Map.Hexagon;
-import views.Assets;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by The Alex on 4/21/2016.
@@ -18,66 +15,29 @@ public class GroundTile extends Tile {
     /* Attributes */
     private Obstacle obstacle;
 
+
     /* Constructors */
     public GroundTile(){
         super();
     }
 
-    public GroundTile(Tile bottomTile , Tile topTile , Tile northTile , Tile southTile , Tile southEastTile , Tile southWestTile , Tile northEastTile , Tile northWestTile , Entity entity , TakeableItem item , AreaEffect areaEffect){
-        super(bottomTile , topTile , northTile , southTile , southEastTile , southWestTile ,  northEastTile , northWestTile ,entity ,item , areaEffect);
-    }
-
-    public GroundTile(Entity entity , TakeableItem item , AreaEffect areaEffect , Obstacle obstacle , Location location){
-        this.entity = entity;
-        this.item = item;
-        this.areaEffect = areaEffect;
+    public GroundTile(Entity entity , TakeableItem item , AreaEffect areaEffect , Obstacle obstacle , Location location , int tileSize){
+        super(entity, item, areaEffect , location , tileSize);
         this.obstacle = obstacle;
-        this.location = location;
 
-        hexagon = new Hexagon(location , 20);
+
+
 
     }
 
     /* Methods */
-    public void sendEntityNorth(){
-        if(northTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
-
-    public void sendEntitySouth(){
-        if(southTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
-
-    public void sendEntityNorthEast(){
-        if(northEastTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
-
-    public void sendEntitySouthEast(){
-        if(southEastTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
-
-    public void sendEntityNorthWest(){
-        if(northWestTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
-
-    public void sendEntitySouthWest(){
-        if(southWestTile.receiveEntity(this.entity)){
-            this.entity = null;
-        }
-    }
 
     public Boolean receiveEntity(Entity entity){
         // Entity Check
         if(this.entity != null){
+            if(this.entity.equals(entity)){
+                return true;
+            }
             return false;
         }
 
@@ -109,10 +69,28 @@ public class GroundTile extends Tile {
     }
 
     public void render(Graphics g){
-        g.drawImage(hexagon.getImage() , (int) location.getX(), (int) location.getY() , null);
+        g.setColor(Color.BLACK);
+        g.fillRect((int) location.getX() ,(int) location.getY() , tileSize , tileSize);
+        if(isPassable()) {
+            g.setColor(Color.BLUE);
+        }else{
+            g.setColor(Color.green);
+        }
+        g.fillRect((int) location.getX() + 3 , (int) location.getY() + 3 , tileSize - 6 , tileSize - 6);
+
         if(item != null){
             g.drawImage(item.getImage() , (int) location.getX(), (int) location.getY()  , null );
         }
+
+    }
+
+    //test
+    public boolean isPassable(){
+        if(obstacle != null){
+            return obstacle.passable();
+        }
+
+        return true;
 
     }
 }
