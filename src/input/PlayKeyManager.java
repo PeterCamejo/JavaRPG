@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
  */
 public class PlayKeyManager extends KeyManager {
     /* Attributes */
-    public boolean north, south, east, west;
+    public boolean north, south, east, west , inventory;
 
     /* Constructor */
     public PlayKeyManager(){
@@ -23,5 +23,6 @@ public class PlayKeyManager extends KeyManager {
         south = keys[KeyEvent.VK_DOWN];
         east = keys[KeyEvent.VK_RIGHT];
         west = keys[KeyEvent.VK_LEFT];
+        inventory = keys[KeyEvent.VK_I];
     }
 }

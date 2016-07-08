@@ -1,7 +1,10 @@
 package models.Inventory;
 
+import models.Entity.Entity;
 import models.Item.TakeableItem;
 import models.ItemContainer.ItemContainer;
+
+import java.awt.image.BufferedImage;
 
 /*
 * Implemented by Peter Camejo
@@ -63,9 +66,11 @@ public class Inventory implements ItemContainer {
         TakeableItem itemCopy = null;
 
         for(int i = 0; i < size; i++){
-            if(items[i].getId() == id ){
-                itemCopy = items[i];
-                items[i] = null;
+            if(items[i]!= null) {
+                if (items[i].getId() == id) {
+                    itemCopy = items[i];
+                    items[i] = null;
+                }
             }
         }
         if(itemCopy == null){
@@ -81,6 +86,12 @@ public class Inventory implements ItemContainer {
         return itemCopy;
     }
 
+    public void useItemByIndex(int index , Entity entity){
+        if(items[index] != null){
+            items[index].use(entity);
+        }
+    }
+
     public Boolean hasItemInstance(int id){
         for(int i = 0 ; i < size; i++){
             if(items[i].getId() == id){
@@ -92,6 +103,13 @@ public class Inventory implements ItemContainer {
 
     public TakeableItem getItemByIndex(int index){
         return items[index];
+    }
+    public BufferedImage getItemImageByIndex(int index){
+        if(items[index] != null){
+            return items[index].getImage();
+        }else{
+            return null;
+        }
     }
 
     public void addGold(int amount){
@@ -111,21 +129,5 @@ public class Inventory implements ItemContainer {
     public int getGold(){
         return goldAmount;
     }
-
-
-    @Override
-    public String toString(){
-        String value = "[";
-
-        for(int i = 0; i < size; i++){
-            if(items[i] == null){
-                value += " Empty ";
-            }else {
-                value += " Item ";
-            }
-        }
-        value += "]";
-
-        return value;
-    }
+    public int getSize(){ return size;}
 }

@@ -37,7 +37,7 @@ public class Map {
     public void init() {
         for(int i = 0 ; i < mapSize; i++){
             for(int j = 0 ; j < mapSize; j++){
-                if(i == 15){
+                if(i == 4){
                     tiles[i][j] = new GroundTile(null , ItemFactory.getDoorKey() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
                 }else if(i == 25){
                     tiles[i][j] = new GroundTile(null , null , null , new Obstacle() , new Location(i * tileSize , j* tileSize) , tileSize);

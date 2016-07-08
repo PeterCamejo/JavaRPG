@@ -1,6 +1,7 @@
 package models.States;
 
 import input.KeyManager;
+import input.MenuKeyManager;
 import input.PlayKeyManager;
 import models.Entity.Avatar;
 import models.Location;
@@ -27,8 +28,8 @@ public class PlayState extends State {
     }
 
     public PlayState(Avatar player , PlayKeyManager keyManager) {
-        tileSize = 32;
-        mapSize = 30;
+        tileSize = 80;
+        mapSize = 10;
 
         this.player = player;
         this.keyManager = keyManager;
@@ -54,6 +55,9 @@ public class PlayState extends State {
         if(keyManager.west){
             player.moveWest();
         }
+        if(keyManager.inventory){
+            GameStateManager.setState(new InventoryState(new MenuKeyManager() , this));
+        }
     }
 
     public void render(Graphics g){
@@ -64,4 +68,5 @@ public class PlayState extends State {
     public KeyManager getKeyManager() {
         return keyManager;
     }
+    public Avatar getPlayer(){ return player;}
 }
