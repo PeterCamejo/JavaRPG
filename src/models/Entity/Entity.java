@@ -32,7 +32,7 @@ public abstract class Entity{
     /* Constructor */
     public Entity(){
         name = "";
-        occupation = "";
+        occupation = "Smasher";
         stats = new Stat();
         inventory = new Inventory();
         equipment = new Equipment();
@@ -86,6 +86,7 @@ public abstract class Entity{
     public void equip(EquipableItem item){
         item.equip(this , this.equipment , this.inventory);
     }
+    public Equipment getEquipment(){ return equipment;}
 
     /* Occupation */
     public String getOccupationName(){

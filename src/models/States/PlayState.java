@@ -59,6 +59,9 @@ public class PlayState extends State {
         if(keyManager.inventory){
             GameStateManager.setState(new InventoryState(new MenuKeyManager() , this));
         }
+        if(keyManager.equipment){
+            GameStateManager.setState(new EquipmentState(this));
+        }
     }
 
     public void render(Graphics g){

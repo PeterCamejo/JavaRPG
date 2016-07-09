@@ -200,4 +200,10 @@ public class Equipment implements ArmorContainer{
         this.equippedWeapon = weapon;
         return;
     }
+
+    //////////////
+
+    public int getSize(){
+        return MAX_CONTAINER_SIZE+1;
+    }
 }
