@@ -57,6 +57,7 @@ public class GroundTile extends Tile {
         //Activate Stuff
         this.entity = entity;
 
+
         if(this.item != null){
             item.activate(entity);
             item = null;

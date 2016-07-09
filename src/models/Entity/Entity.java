@@ -57,10 +57,11 @@ public abstract class Entity{
     /* Inventory */
     public Inventory getInventory(){ return this.inventory;}
 
-    public void dropItem(TakeableItem item){
+    public void dropItem(TakeableItem item ,int index){
         if(item != null){
-            inventory.removeItem(item.getId());
-            currentTile.addItem(item);
+            if(currentTile.addItem(item)){
+                inventory.removeItemByIndex(index);
+            }
         }
     }
     private void placeItem(Item item){ currentTile.addItem(item);}
@@ -108,6 +109,12 @@ public abstract class Entity{
     public Location getLocation(){ return location;}
     public void setLocation(Location location){ this.location = location;}
     public void setMovement(Movement movement){ this.movement = movement;}
+    public void setCurrentTile(Tile tile){ this.currentTile = tile;}
+    public Location getCenter(){
+        int x =(int) location.getX() + 40;
+        int y = (int) location.getY() + 40;
+        return new Location(x, y);
+    }
 
 
 

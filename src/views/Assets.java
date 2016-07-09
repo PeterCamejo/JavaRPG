@@ -55,10 +55,10 @@ public class Assets {
 
     /* Methods */
     public static void init() {
-/*
+
 
         SpriteSheet oneHandSheet = new SpriteSheet(new ImageLoader().loadImage("/oneHand.png"));
-        SpriteSheet twoHandSheet = new SpriteSheet(new ImageLoader().loadImage("/twoHand.png"));
+/*        SpriteSheet twoHandSheet = new SpriteSheet(new ImageLoader().loadImage("/twoHand.png"));
         SpriteSheet fistSheet = new SpriteSheet(new ImageLoader().loadImage("/fist.png"));
         SpriteSheet staffSheet = new SpriteSheet(new ImageLoader().loadImage("/staff.png"));
         SpriteSheet rangedSheet = new SpriteSheet(new ImageLoader().loadImage("/ranged.png"));
@@ -82,13 +82,10 @@ public class Assets {
 
   */      SpriteSheet chestKeySheet = new SpriteSheet(new ImageLoader().loadImage("/chestKey.png"));
         SpriteSheet doorKeySheet = new SpriteSheet(new ImageLoader().loadImage("/doorKey.png"));
-/*
-        //Test SpriteSheets
-        SpriteSheet testHexagonSheet = new SpriteSheet(new ImageLoader().loadImage("/TestGround.png"));
 
 
         oneHand = oneHandSheet.crop(0, 0, width, height);
-        twoHand = twoHandSheet.crop(0, 0, width, height);
+/*        twoHand = twoHandSheet.crop(0, 0, width, height);
         fist = fistSheet.crop(0, 0, width, height);
         staff = staffSheet.crop(0, 0, width, height);
         ranged = rangedSheet.crop(0, 0, width, height);

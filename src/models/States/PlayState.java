@@ -42,6 +42,7 @@ public class PlayState extends State {
     /* Methods */
     public void tick(){
         keyManager.tick();
+        gameMap.tick();
 
         if( keyManager.north) {
             player.moveNorth();

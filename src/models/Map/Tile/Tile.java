@@ -30,30 +30,7 @@ public abstract class Tile {
         areaEffect = null;
         tileSize = 0;
     }
-/*
-    public Tile(Tile bottomTile , Tile topTile , Tile northTile , Tile southTile , Tile southEastTile , Tile southWestTile , Tile northEastTile , Tile northWestTile , Entity entity , TakeableItem item , AreaEffect areaEffect){
-        this.bottomTile = bottomTile;
-        this.topTile = topTile;
-        this.northTile = northTile;
-        this.southTile = southTile;
-        this.southEastTile = southEastTile;
-        this.southWestTile = southWestTile;
-        this.northEastTile = northEastTile ;
-        this.northEastTile = northWestTile;
 
-        this.entity  = entity;
-        this.item = item;
-        this.areaEffect = areaEffect;
-
-        location = null;
-
-        if(bottomTile != null){
-            this.height = bottomTile.getHeight() + 1;
-        }else{
-            this.height = 1;
-        }
-    }
-    */
 
     public Tile(Entity entity , TakeableItem item , AreaEffect areaEffect , Location location, int tileSize){
         this.entity  = entity;
@@ -78,14 +55,14 @@ public abstract class Tile {
         }
     }
 
-    public void addItem(Item item){
+    public boolean addItem(Item item){
         if(this.item == null){
             this.item = item;
-            return;
+            return true;
         }
 
-        System.out.print("Can't drop that. There is already an item in this tile!");
-        return; //do nothing
+        System.out.println("Can't drop that. There is already an item in this tile!");
+        return false; //do nothing
     }
 
     public Location getLocation(){

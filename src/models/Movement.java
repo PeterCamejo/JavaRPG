@@ -57,7 +57,6 @@ public class Movement {
         }
 
         tempTile = map.getTileAtLocation(new Location(hitboxX , hitboxY));
-        map.test(new Location(hitboxX , hitboxY));
 
         if(tempTile.receiveEntity(entity)){
             map.clearTileAtLocation(entity.getLocation());

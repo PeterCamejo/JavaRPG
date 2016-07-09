@@ -15,7 +15,6 @@ public class GameStateManager {
     /* Methods */
     public static void setState(State state){
         currentState = state;
-        game.clearKeyListener();
         game.setKeyListener(state.getKeyManager());
     }
 
@@ -38,4 +37,5 @@ public class GameStateManager {
     public static void setGameState(){
         setState(game.getGameState());
     }
+
 }

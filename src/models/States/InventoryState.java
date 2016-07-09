@@ -17,9 +17,12 @@ public class InventoryState extends State {
     private MenuKeyManager keyManager;
     private PlayState playState;
     private Avatar player;
-    private int selected;
+    private Point selected;
+    private int selectedIndex;
     private Inventory inventory;
-    private TakeableItem[] items;
+    private TakeableItem[][] items;
+    private int rows;
+    private int cols;
 
     private int inputBuffer;
     /* Constructors*/
@@ -30,8 +33,11 @@ public class InventoryState extends State {
     public InventoryState(MenuKeyManager keyManager , PlayState playState){
         this.keyManager = keyManager;
         this.playState = playState;
-        selected = 0;
+        selected = new Point(0 , 0);
         inputBuffer = 0;
+        rows = 3;
+        cols = 5;
+        selectedIndex = 0;
 
         init();
     }
@@ -40,7 +46,7 @@ public class InventoryState extends State {
     private void init(){
         player = playState.getPlayer();
         inventory = player.getInventory();
-        items = new TakeableItem[inventory.getSize()];
+        items = new TakeableItem[rows][cols];
         refreshInventory();
     }
 
@@ -60,13 +66,15 @@ public class InventoryState extends State {
                 moveSelected("west");
             }
             if (keyManager.select0 || keyManager.select1) {
-                inventory.useItemByIndex(selected, player);
+                inventory.useItemByIndex(selectedIndex ,  player);
+                refreshInventory();
             }
             if (keyManager.back) {
                 GameStateManager.setState(playState);
             }
             if (keyManager.drop) {
-                player.dropItem(inventory.getItemByIndex(selected));
+                player.dropItem(inventory.getItemByIndex(selectedIndex) , selectedIndex);
+                refreshInventory();
             }
             inputBuffer = 0;
         }
@@ -76,22 +84,21 @@ public class InventoryState extends State {
     public void render(Graphics g) {
         int x = 100;
         int y = 100;
-        int itemCount = 0;
 
         //Background
         g.setColor(Color.BLUE);
         g.fillRect(0, 0, 800, 800);
 
         //Items
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (inventory.getItemByIndex(itemCount) == null) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (items[i][j] == null) {
                     g.setColor(Color.BLACK);
                     g.fillRect(x, y, 100, 100);
                 } else {
-                    g.drawImage(inventory.getItemImageByIndex(i), x, y, null);
+                    g.drawImage(items[i][j].getImage(), x, y, null);
                 }
-                if (selected == itemCount++) {
+                if (selected.x == i && selected.y == j) {
                     g.setColor(Color.red);
                     g.drawRect(x - 3, y - 3, 106, 106);
                 }
@@ -107,31 +114,48 @@ public class InventoryState extends State {
     }
 
     private void moveSelected(String direction){
-        int originalSelected = selected;
+        int originalX = selected.x;
+        int originalY = selected.y;
+        int originalIndex = selectedIndex;
 
         switch(direction){
             case "north":
-                selected -= 5;
+                selected.x--;
+                selectedIndex-=cols;
                 break;
             case"south":
-                selected += 5;
+                selected.x++;
+                selectedIndex+=cols;
                 break;
             case "east":
-                selected ++;
+                selected.y++;
+                selectedIndex++;
                 break;
             case "west":
-                selected --;
+                selected.y--;
+                selectedIndex--;
                 break;
         }
 
-        if(selected >= inventory.getSize() || selected < 0){
-            selected = originalSelected;
+        if(selected.y >= cols || selected.y < 0 ){
+            selected.y = originalY;
+        }
+        if(selected.x >= rows || selected.x < 0){
+            selected.x = originalX;
+        }
+        if(selectedIndex >= inventory.getSize() || selectedIndex < 0){
+            selectedIndex = originalIndex;
         }
     }
 
     private void refreshInventory(){
-        for(int i = 0 ; i < inventory.getSize(); i++){
-            items[i] = inventory.getItemByIndex(i);
+        int index = 0;
+
+        for(int i = 0; i < rows ; i++){
+            for(int j = 0 ; j < cols ; j++){
+                items[i][j] = inventory.getItemByIndex(index++);
+            }
         }
     }
+
 }

@@ -70,11 +70,12 @@ public class Inventory implements ItemContainer {
                 if (items[i].getId() == id) {
                     itemCopy = items[i];
                     items[i] = null;
+                    return itemCopy;
                 }
             }
         }
         if(itemCopy == null){
-            System.out.println("Remove models.Item failed: models.Item not found");
+            System.out.println("Remove Item failed: Item not found");
         }
 
         return itemCopy;

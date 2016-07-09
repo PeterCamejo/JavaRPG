@@ -39,8 +39,8 @@ public class Map {
             for(int j = 0 ; j < mapSize; j++){
                 if(i == 4){
                     tiles[i][j] = new GroundTile(null , ItemFactory.getDoorKey() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
-                }else if(i == 25){
-                    tiles[i][j] = new GroundTile(null , null , null , new Obstacle() , new Location(i * tileSize , j* tileSize) , tileSize);
+                }else if(i == 6){
+                    tiles[i][j] = new GroundTile(null , ItemFactory.getBasicOneHand() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
                 } else{
                     tiles[i][j] = new GroundTile(null, null, null, null, new Location(i * tileSize, j * tileSize), tileSize);
                 }
@@ -49,6 +49,10 @@ public class Map {
 
 
        // tiles[0] = new GroundTile(null, null, null, null , new Location(20 ,20 , 0) , tileSize);
+    }
+
+    public void tick(){
+        updateEntityTile();
     }
 
     public void render(Graphics g){
@@ -82,9 +86,12 @@ public class Map {
         return tileSize;
     }
 
-    //test
-    public void test(Location location){
-        test = location;
+    private void updateEntityTile(){
+        Location center = player.getCenter();
+        Point tilePoint = center.convertToTile(tileSize);
+        player.setCurrentTile(tiles[tilePoint.x][tilePoint.y]);
+
+
     }
 }
 
