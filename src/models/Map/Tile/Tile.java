@@ -5,8 +5,10 @@ import models.Entity.Entity;
 import models.Item.Item;
 import models.Item.TakeableItem;
 import models.Location;
+import views.Assets;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -14,14 +16,11 @@ import java.awt.*;
 public abstract class Tile {
     /* Attributes */
     protected int tileSize;
-
-
     protected Entity entity;
     protected Item item;
     protected AreaEffect areaEffect;
-
-
     protected Location location;
+    protected BufferedImage image;
 
     /* Constructor */
     public Tile(){
@@ -76,5 +75,6 @@ public abstract class Tile {
     public void setItem(Item item){
         this.item = item;
     }
+    public BufferedImage getImage(){ return image;}
 
 }

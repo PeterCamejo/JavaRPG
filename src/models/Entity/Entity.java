@@ -42,6 +42,17 @@ public abstract class Entity{
 
     }
 
+    public Entity(String name , String occupation , Stat stats){
+        this.name = name;
+        this.occupation = occupation;
+        this.stats = stats;
+        inventory = new Inventory();
+        equipment = new Equipment();
+        currentTile = new GroundTile();
+        location = new Location();
+        movement = new Movement();
+    }
+
     public Entity(String name , String occupation , Stat stats, Inventory inventory , Equipment equipment , Tile currentTile , Location location , Movement movement){
         this.name = name;
         this.occupation = occupation;

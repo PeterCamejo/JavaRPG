@@ -78,7 +78,7 @@ public class ItemFactory {
     /** Methods **/
     /* Weapons */
 
-    public static OneHand getBasicOneHand(){return new OneHand(1 , "Basic 1H Sword" , 5.00 , new ArrayList<Buff>());}
+    public static OneHand getBasicOneHand(){return new OneHand(BASIC_ONEHAND , "Basic 1H Sword" , 5.00 , new ArrayList<Buff>());}
    /* public static TwoHand getBasicTwoHand(){return new TwoHand(BASIC_TWOHAND , "Basic 2H AXE" , 10.00);}
     public static Fist getBasicFist(){return new Fist(BASIC_FIST, "Basic Fist" , 2.50);}
     public static Ranged getBasicRanged(){return new Ranged(BASIC_RANGED, "Basic Bow" , 5.00);}

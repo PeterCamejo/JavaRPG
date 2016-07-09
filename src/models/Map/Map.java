@@ -8,6 +8,7 @@ import models.Item.InteractiveItems.Obstacle;
 import models.Location;
 import models.Map.Tile.GroundTile;
 import models.Map.Tile.Tile;
+import models.Map.Tile.WaterTile;
 
 
 import java.awt.*;
@@ -41,7 +42,9 @@ public class Map {
                     tiles[i][j] = new GroundTile(null , ItemFactory.getDoorKey() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
                 }else if(i == 6){
                     tiles[i][j] = new GroundTile(null , ItemFactory.getBasicOneHand() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
-                } else{
+                } else if(j == 7){
+                    tiles[i][j] = new WaterTile(null , null , null , null, new Location(i * tileSize , j * tileSize) , tileSize);
+                }else{
                     tiles[i][j] = new GroundTile(null, null, null, null, new Location(i * tileSize, j * tileSize), tileSize);
                 }
             }

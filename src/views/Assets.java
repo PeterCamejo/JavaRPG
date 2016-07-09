@@ -48,10 +48,9 @@ public class Assets {
     public static BufferedImage chestKey;
     public static BufferedImage doorKey;
 
-    //Test Images
-    public static BufferedImage TestHexagon;
-    public static BufferedImage BGIMAGE;
-
+    /* Tiles */
+    public static BufferedImage grassTile;
+    public static BufferedImage waterTile;
 
     /* Methods */
     public static void init() {
@@ -83,6 +82,9 @@ public class Assets {
   */      SpriteSheet chestKeySheet = new SpriteSheet(new ImageLoader().loadImage("/chestKey.png"));
         SpriteSheet doorKeySheet = new SpriteSheet(new ImageLoader().loadImage("/doorKey.png"));
 
+        SpriteSheet grassTileSheet = new SpriteSheet(new ImageLoader().loadImage("/grassTile.jpg"));
+        SpriteSheet waterTileSheet = new SpriteSheet(new ImageLoader().loadImage("/waterTile.jpg"));
+
 
         oneHand = oneHandSheet.crop(0, 0, width, height);
 /*        twoHand = twoHandSheet.crop(0, 0, width, height);
@@ -110,11 +112,8 @@ public class Assets {
         chestKey = chestKeySheet.crop(0, 0, width, height);*/
         doorKey = doorKeySheet.crop(0, 0, width, height);
 
-        /*
-        grassTerrain = DrawTerrainImages.getGrassImage();
-        mountainTerrain = DrawTerrainImages.getMountainImage();
-        airTerrain = DrawTerrainImages.getAirImage();
-        */
+        grassTile = grassTileSheet.crop(0 , 0 , width , height);
+        waterTile = waterTileSheet.crop(0 , 0 , width , height);
 
 
     }

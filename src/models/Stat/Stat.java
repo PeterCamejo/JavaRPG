@@ -52,7 +52,7 @@ public class Stat {
         currentMana  = maxMana;
     }
     //Level 1. Meant for Avatar Creation
-    public Stat( int lives , double strength , double agility , double intellect , double stamina , double movement , Boolean groundMovement , Boolean waterMovement , Boolean airMovement){
+    public Stat( int lives , double strength , double agility , double intellect , double stamina , double movement , Boolean groundMovement , Boolean waterMovement){
         this.lives = lives;
         this.strength = strength;
         this.agility = agility;
@@ -67,7 +67,7 @@ public class Stat {
         this.expNeeded = 100;
         this.groundMovement = groundMovement;
         this.waterMovement = waterMovement;
-        this.airMovement = airMovement;
+
 
         update();
         currentHealth = maxHealth;

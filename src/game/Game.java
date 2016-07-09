@@ -4,6 +4,7 @@ import input.KeyManager;
 import input.MenuKeyManager;
 import input.PlayKeyManager;
 import models.Entity.Avatar;
+import models.Factories.EntityFactory;
 import models.Inventory.Inventory;
 import models.States.*;
 
@@ -56,7 +57,7 @@ public class Game implements Runnable{
         display.addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new PlayState(new Avatar() , new PlayKeyManager());
+        gameState = new PlayState(EntityFactory.getStartingSmasherAvatar("Hero"), new PlayKeyManager());
         mainMenuState = new MainMenuState(new MenuKeyManager());
         GameStateManager.setState(mainMenuState);
 

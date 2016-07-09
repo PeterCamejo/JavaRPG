@@ -20,5 +20,9 @@ public class Avatar extends Entity {
         super(name, occupation, stats , inventory, equipment ,currentTile ,location , movement);
     }
 
+    public Avatar(String name,  String occupation , Stat stats){
+        super(name, occupation , stats);
+    }
+
 
 }

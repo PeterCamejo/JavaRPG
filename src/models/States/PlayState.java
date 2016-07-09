@@ -22,6 +22,7 @@ public class PlayState extends State {
     private int tileSize;
     private int mapSize;
 
+
     /* Constructors*/
     public PlayState(){
         super();
@@ -36,32 +37,34 @@ public class PlayState extends State {
         gameMap = new Map(player, tileSize, mapSize);
 
         player.setMovement(new Movement(player, gameMap));
-    }
+
+}
 
 
     /* Methods */
     public void tick(){
         keyManager.tick();
         gameMap.tick();
+           if (keyManager.north) {
+               player.moveNorth();
+           }
+           if (keyManager.south) {
+               player.moveSouth();
+           }
+           if (keyManager.east) {
+               player.moveEast();
+           }
+           if (keyManager.west) {
+               player.moveWest();
+           }
+           if (keyManager.inventory) {
+               GameStateManager.setState(new InventoryState(new MenuKeyManager(), this));
+           }
+           if (keyManager.equipment) {
+               GameStateManager.setState(new EquipmentState(this));
+           }
 
-        if( keyManager.north) {
-            player.moveNorth();
-        }
-        if(keyManager.south){
-            player.moveSouth();
-        }
-        if(keyManager.east){
-            player.moveEast();
-        }
-        if(keyManager.west){
-            player.moveWest();
-        }
-        if(keyManager.inventory){
-            GameStateManager.setState(new InventoryState(new MenuKeyManager() , this));
-        }
-        if(keyManager.equipment){
-            GameStateManager.setState(new EquipmentState(this));
-        }
+
     }
 
     public void render(Graphics g){

@@ -5,6 +5,7 @@ import models.Entity.Entity;
 import models.Item.InteractiveItems.Obstacle;
 import models.Item.TakeableItem;
 import models.Location;
+import views.Assets;
 
 import java.awt.*;
 
@@ -19,14 +20,14 @@ public class GroundTile extends Tile {
     /* Constructors */
     public GroundTile(){
         super();
+        obstacle = null;
+        image = Assets.grassTile;
     }
 
     public GroundTile(Entity entity , TakeableItem item , AreaEffect areaEffect , Obstacle obstacle , Location location , int tileSize){
         super(entity, item, areaEffect , location , tileSize);
         this.obstacle = obstacle;
-
-
-
+        image = Assets.grassTile;
 
     }
 
@@ -77,7 +78,7 @@ public class GroundTile extends Tile {
         }else{
             g.setColor(Color.green);
         }
-        g.fillRect((int) location.getX() + 3 , (int) location.getY() + 3 , tileSize - 6 , tileSize - 6);
+        g.drawImage(image , (int) location.getX() + 3 , (int) location.getY() + 3 , tileSize - 6 , tileSize - 6 , null);
 
         if(item != null){
             g.drawImage(item.getImage() , (int) location.getX(), (int) location.getY()  , null );
