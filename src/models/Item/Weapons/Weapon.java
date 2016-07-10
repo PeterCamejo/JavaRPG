@@ -46,15 +46,19 @@ public class Weapon extends EquipableItem {
             System.out.println("Can't Equip! You must be a "+ requirement.getRequiredOccupation() + " over level "+ requirement.getRequiredLevel());
             return; //do nothing
         }
-        equipment.setEquippedWeapon(this);
-        inventory.removeItem(id);
-        this.applyBuffs(entity);
+        if(equipment.setEquippedWeapon(this)) {
+            inventory.removeItem(id);
+            this.applyBuffs(entity);
+        }
     }
 
     public void unequip(Entity entity, Equipment equipment, Inventory inventory) {
-        equipment.setEquippedWeapon(null);
-        inventory.addItem(this);
-        this.removeBuffs(entity);
+       if(inventory.addItem(this)){
+           equipment.clearEquippedWeapon();
+           this.removeBuffs(entity);
+       }
+
+
     }
 
 

@@ -196,9 +196,18 @@ public class Equipment implements ArmorContainer{
         return this.equippedWeapon;
     }
 
-    public void setEquippedWeapon(Weapon weapon){
-        this.equippedWeapon = weapon;
-        return;
+    public boolean setEquippedWeapon(Weapon weapon){
+        if(equippedWeapon == null) {
+            equippedWeapon = weapon;
+            return true;
+        }
+
+        System.out.println("Already have a weapon equipped.");
+        return false;
+    }
+
+    public void clearEquippedWeapon(){
+        equippedWeapon = null;
     }
 
     //////////////
