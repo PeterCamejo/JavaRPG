@@ -29,7 +29,6 @@ public class Stat {
     //Movement Privileges
     private Boolean groundMovement;
     private Boolean waterMovement;
-    private Boolean airMovement;
 
     /* Constructor */
     public Stat(){
@@ -45,7 +44,7 @@ public class Stat {
         level = 1;
         expNeeded = 100;
         groundMovement = true;
-        waterMovement = airMovement = false;
+        waterMovement =  false;
 
         update();
         currentHealth = maxHealth;
@@ -198,10 +197,6 @@ public class Stat {
         this.waterMovement = bool;
     }
 
-    public void modifyAirMovement(Boolean bool){
-        this.airMovement = bool;
-    }
-
     public void levelUp(){
         this.experience = this.expNeeded;
     }
@@ -222,6 +217,5 @@ public class Stat {
     public double getCurrentMana(){ return this.currentMana;}
     public Boolean getGroundMovement(){ return this.groundMovement;}
     public Boolean getWaterMovement(){ return this.waterMovement;}
-    public Boolean getAirMovement(){ return this.airMovement;}
 
 }

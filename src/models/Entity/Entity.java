@@ -89,7 +89,6 @@ public abstract class Entity{
     }
     public Boolean getGroundMovement(){ return stats.getGroundMovement();}
     public Boolean getWaterMovement(){ return stats.getWaterMovement();}
-    public Boolean getAirMovement(){ return stats.getAirMovement();}
     public int getLevel(){ return stats.getLevel();}
     public double getMovementSpeed(){ return stats.getMovement();}
 
