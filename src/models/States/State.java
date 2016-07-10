@@ -10,9 +10,11 @@ import java.awt.*;
  */
 public abstract class State {
     /* Attributes */
-
+    protected int width , height;
     /* Constructors */
     public State(){
+        width = 800;
+        height = 800;
     }
 
     /* Methods */

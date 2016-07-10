@@ -16,11 +16,11 @@ public class OneHand extends Weapon{
     /* Constructors */
     //No level requirement
     public OneHand( int id,  String name , double attackRating, ArrayList<Buff> buffs){
-        super(2.00 , "Smasher" , Assets.oneHand, id, name, attackRating , buffs);
+        super(2.00 , "Warrior" , Assets.oneHand, id, name, attackRating , buffs);
     }
 
     //Level requirement
     public OneHand(int requiredLevel ,   int id, String name , double attackRating, ArrayList<Buff> buffs){
-        super(2.00 , "Smasher" , requiredLevel , Assets.oneHand, id, name, attackRating, buffs);
+        super(2.00 , "Warrior" , requiredLevel , Assets.oneHand, id, name, attackRating, buffs);
     }
 }

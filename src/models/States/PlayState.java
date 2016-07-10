@@ -28,12 +28,12 @@ public class PlayState extends State {
         super();
     }
 
-    public PlayState(Avatar player , PlayKeyManager keyManager) {
+    public PlayState(Avatar player) {
         tileSize = 80;
         mapSize = 10;
 
         this.player = player;
-        this.keyManager = keyManager;
+        this.keyManager = new PlayKeyManager();
         gameMap = new Map(player, tileSize, mapSize);
 
         player.setMovement(new Movement(player, gameMap));

@@ -29,7 +29,7 @@ public class MainMenuState extends State {
         keyManager.tick();
 
         if(keyManager.select0 || keyManager.select1){
-            GameStateManager.setGameState();
+            GameStateManager.setState(new CreateState());
         }
     }
 

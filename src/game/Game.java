@@ -31,9 +31,8 @@ public class Game implements Runnable{
     private Graphics g;
 
     //States
-    private State gameState;
     private State mainMenuState;
-    private State inventoryState;
+
 
     //Input
     private KeyManager keyManager;
@@ -57,7 +56,7 @@ public class Game implements Runnable{
         display.addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new PlayState(EntityFactory.getStartingSmasherAvatar("Hero"), new PlayKeyManager());
+
         mainMenuState = new MainMenuState(new MenuKeyManager());
         GameStateManager.setState(mainMenuState);
 
@@ -149,9 +148,7 @@ public class Game implements Runnable{
         display.addKeyListener(keyManager);
     }
 
-    public PlayState getGameState(){
-        return (PlayState) gameState;
-    }
+
 
 
     public KeyManager getKeyManager(){
