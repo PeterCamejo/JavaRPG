@@ -70,6 +70,9 @@ public class ItemFactory {
     private static final int CHEST_KEY = 32;
 
     private static final int BASIC_DAGGER = 33;
+    private static final int POWERFUL_DAGGER = 34;
+
+    private static final int BOULDER = 35;
 
 
 
@@ -155,6 +158,9 @@ public class ItemFactory {
     /* Misc Items */
     public static MiscItem getChestKey(){return new MiscItem(Assets.chestKey , CHEST_KEY , "Item Chest Key");}
     public static MiscItem getDoorKey(){ return new MiscItem(Assets.doorKey  , DOOR_KEY , "Door Key");}
+
+    /* Obstacles */
+    public static Obstacle getBoulder(){ return new Obstacle(Assets.boulder , BOULDER , "Boulder");}
 
 
 

@@ -44,7 +44,11 @@ public class Map {
                     tiles[i][j] = new GroundTile(null , ItemFactory.getBasicOneHand() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
                 } else if(j == 7){
                     tiles[i][j] = new WaterTile(null , null , null , null, new Location(i * tileSize , j * tileSize) , tileSize);
-                }else{
+                }else if(i == 3 && j == 3){
+                    tiles[i][j] = new GroundTile(null , null , null , ItemFactory.getBoulder() , new Location(i * tileSize , j * tileSize) , tileSize);
+                }
+
+                else{
                     tiles[i][j] = new GroundTile(null, null, null, null, new Location(i * tileSize, j * tileSize), tileSize);
                 }
             }

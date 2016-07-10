@@ -1,7 +1,6 @@
 package models.Factories;
 
 import models.Entity.Avatar;
-import models.Item.Item;
 import models.Location;
 import models.Stat.Stat;
 

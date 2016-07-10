@@ -53,6 +53,9 @@ public class Assets {
     public static BufferedImage grassTile;
     public static BufferedImage waterTile;
 
+    /* Obstacles */
+    public static BufferedImage boulder;
+
     /* Methods */
     public static void init() {
 
@@ -87,6 +90,7 @@ public class Assets {
         SpriteSheet grassTileSheet = new SpriteSheet(new ImageLoader().loadImage("/grassTile.jpg"));
         SpriteSheet waterTileSheet = new SpriteSheet(new ImageLoader().loadImage("/waterTile.jpg"));
 
+        SpriteSheet boulderSheet = new SpriteSheet(new ImageLoader().loadImage("/boulder.png"));
 
         oneHand = oneHandSheet.crop(0, 0, width, height);
         dagger = daggerSheet.crop(0 , 0 ,width , height);
@@ -118,6 +122,6 @@ public class Assets {
         grassTile = grassTileSheet.crop(0 , 0 , width , height);
         waterTile = waterTileSheet.crop(0 , 0 , width , height);
 
-
+        boulder = boulderSheet.crop(0 , 0 , width , height);
     }
 }

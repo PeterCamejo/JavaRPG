@@ -83,6 +83,9 @@ public class GroundTile extends Tile {
         if(item != null){
             g.drawImage(item.getImage() , (int) location.getX(), (int) location.getY()  , null );
         }
+        if(obstacle != null){
+            g.drawImage(obstacle.getImage(), (int) location.getX() , (int) location.getY() , null);
+        }
 
     }
 
