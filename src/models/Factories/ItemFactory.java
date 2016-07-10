@@ -69,6 +69,8 @@ public class ItemFactory {
     private static final int DOOR_KEY = 31;
     private static final int CHEST_KEY = 32;
 
+    private static final int BASIC_DAGGER = 33;
+
 
 
 
@@ -79,10 +81,12 @@ public class ItemFactory {
     /* Weapons */
 
     public static OneHand getBasicOneHand(){return new OneHand(BASIC_ONEHAND , "Basic 1H Sword" , 5.00 , new ArrayList<Buff>());}
+    public static Dagger getBasicDagger(){ return new Dagger(BASIC_DAGGER , "Basic Dagger" , 3.00 , new ArrayList<Buff>());}
+    public static Staff getBasicStaff(){ return new Staff(BASIC_STAFF , "Basic Staff" , 2.50 , new ArrayList<Buff>());}
    /* public static TwoHand getBasicTwoHand(){return new TwoHand(BASIC_TWOHAND , "Basic 2H AXE" , 10.00);}
     public static Fist getBasicFist(){return new Fist(BASIC_FIST, "Basic Fist" , 2.50);}
     public static Ranged getBasicRanged(){return new Ranged(BASIC_RANGED, "Basic Bow" , 5.00);}
-    public static Staff getBasicStaff(){ return new Staff(BASIC_STAFF , "Basic Staff" , 2.50);}
+
 
     public static OneHand getPowerfulOneHand(){ return new OneHand(5 , POWERFUL_ONEHAND , "Powerful 1H Sword" , 15.00);}
     public static TwoHand getPowerfulTwoHand(){ return new TwoHand(5 , POWERFUL_TWOHAND , "Powerful 2H Axe" , 30.00);}

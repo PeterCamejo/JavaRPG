@@ -1,6 +1,7 @@
 package models.Factories;
 
 import models.Entity.Avatar;
+import models.Item.Item;
 import models.Location;
 import models.Stat.Stat;
 
@@ -35,6 +36,7 @@ public class EntityFactory {
         Stat stats = new Stat(5 , 10 , 5 , 5 , 10 , 3 , true, false);
         Avatar avatar = new Avatar(name , "Warrior" , stats);
         avatar.setLocation(new Location(0 , 0 ));
+        avatar.equip(ItemFactory.getBasicOneHand());
         return avatar;
     }
 
@@ -42,6 +44,7 @@ public class EntityFactory {
         Stat stats = new Stat( 5 , 5 , 5, 15 , 5 , 3 , true , true);
         Avatar avatar = new Avatar(name , "Mage" , stats);
         avatar.setLocation(new Location(0, 0));
+        avatar.equip(ItemFactory.getBasicStaff());
         return avatar;
     }
 
@@ -49,6 +52,7 @@ public class EntityFactory {
         Stat stats = new Stat(5 , 5 , 15 , 5 , 5 , 5 , true , false);
         Avatar avatar = new Avatar(name , "Rogue" , stats);
         avatar.setLocation(new Location(0 , 0));
+        avatar.equip(ItemFactory.getBasicDagger());
         return avatar;
     }
 }

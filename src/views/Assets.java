@@ -14,6 +14,7 @@ public class Assets {
 
     /* Weapons */
     public static BufferedImage oneHand;
+    public static BufferedImage dagger;
     public static BufferedImage twoHand;
     public static BufferedImage fist;
     public static BufferedImage ranged;
@@ -57,9 +58,10 @@ public class Assets {
 
 
         SpriteSheet oneHandSheet = new SpriteSheet(new ImageLoader().loadImage("/oneHand.png"));
+        SpriteSheet daggerSheet = new SpriteSheet(new ImageLoader().loadImage("/dagger.png"));
+        SpriteSheet staffSheet = new SpriteSheet(new ImageLoader().loadImage("/staff.png"));
 /*        SpriteSheet twoHandSheet = new SpriteSheet(new ImageLoader().loadImage("/twoHand.png"));
         SpriteSheet fistSheet = new SpriteSheet(new ImageLoader().loadImage("/fist.png"));
-        SpriteSheet staffSheet = new SpriteSheet(new ImageLoader().loadImage("/staff.png"));
         SpriteSheet rangedSheet = new SpriteSheet(new ImageLoader().loadImage("/ranged.png"));
 
         SpriteSheet headArmorSheet = new SpriteSheet(new ImageLoader().loadImage("/headArmor.png"));
@@ -87,9 +89,10 @@ public class Assets {
 
 
         oneHand = oneHandSheet.crop(0, 0, width, height);
+        dagger = daggerSheet.crop(0 , 0 ,width , height);
+        staff = staffSheet.crop(0, 0, width, height);
 /*        twoHand = twoHandSheet.crop(0, 0, width, height);
         fist = fistSheet.crop(0, 0, width, height);
-        staff = staffSheet.crop(0, 0, width, height);
         ranged = rangedSheet.crop(0, 0, width, height);
 
         headArmor = headArmorSheet.crop(0, 0, width, height);
