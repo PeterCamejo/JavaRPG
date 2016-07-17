@@ -64,7 +64,7 @@ public class WaterTile extends Tile{
             item = null;
         }
         if(this.areaEffect != null){
-            areaEffect.activate(entity.getStats());
+            areaEffect.activate(entity);
         }
 
         return true;

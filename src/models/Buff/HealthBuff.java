@@ -20,6 +20,6 @@ public class HealthBuff extends Buff{
     /* Attributes */
 
     public void apply(Stat stats) {
-        stats.modifyHealth(this.modifier);
+        stats.modifyHealth(modifier);
     }
 }

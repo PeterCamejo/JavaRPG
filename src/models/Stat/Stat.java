@@ -153,6 +153,7 @@ public class Stat {
 
     //Current Health
     public void modifyHealth(double modifier){
+        System.out.println("Health modified by : " + modifier );
         if(currentHealth + modifier < 0){
             currentHealth = 0;
         }else if(currentHealth + modifier > maxHealth){
@@ -160,6 +161,8 @@ public class Stat {
         }else{
             currentHealth+=modifier;
         }
+
+        System.out.println(" and current health is " + currentHealth);
     }
 
     //Current Mana

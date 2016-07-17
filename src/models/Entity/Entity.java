@@ -87,6 +87,7 @@ public abstract class Entity{
     public Stat getStats(){
         return this.stats;
     }
+    public void setStat(Stat stats){this.stats = stats; }
     public Boolean getGroundMovement(){ return stats.getGroundMovement();}
     public Boolean getWaterMovement(){ return stats.getWaterMovement();}
     public int getLevel(){ return stats.getLevel();}

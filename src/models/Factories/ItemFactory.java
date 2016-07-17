@@ -119,7 +119,7 @@ public class ItemFactory {
     public static ConsumableItem getIntellectPotion(){ return new ConsumableItem("Intellect" , 20 , Assets.intellectPotion, INTELLECT_POTION , "Intellect Potion");}
     public static ConsumableItem getAgilityPotion(){ return new ConsumableItem("Agility" , 20, Assets.agilityPotion , AGILITY_POTION , "Agility Potion");}
     public static ConsumableItem getExperiencePotion(){ return new ConsumableItem("Experience" , 20 , Assets.experiencePotion , EXPERIENCE_POTION , "Experience Potion");}
-
+*/
 
     /* Interactive Items
     public static Chest getItemChest(){
@@ -154,7 +154,7 @@ public class ItemFactory {
 
         return new Chest(Assets.itemChest , ITEM_CHEST , "Item Chest" , getChestKey() , loot , rand.nextInt(51));
     }
-*/
+
     /* Misc Items */
     public static MiscItem getChestKey(){return new MiscItem(Assets.chestKey , CHEST_KEY , "Item Chest Key");}
     public static MiscItem getDoorKey(){ return new MiscItem(Assets.doorKey  , DOOR_KEY , "Door Key");}

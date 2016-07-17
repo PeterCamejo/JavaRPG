@@ -21,6 +21,7 @@ public abstract class Tile {
     protected AreaEffect areaEffect;
     protected Location location;
     protected BufferedImage image;
+    protected int areaEffectBuffer;
 
     /* Constructor */
     public Tile(){
@@ -28,6 +29,7 @@ public abstract class Tile {
         item = null;
         areaEffect = null;
         tileSize = 0;
+        areaEffectBuffer = 0;
     }
 
 
@@ -37,6 +39,7 @@ public abstract class Tile {
         this.areaEffect = areaEffect;
         this.location = location;
         this.tileSize = tileSize;
+        areaEffectBuffer = 0;
 
     }
 
@@ -48,7 +51,12 @@ public abstract class Tile {
     public void tick(){
         if(entity != null) {
             if (areaEffect != null) {
-                areaEffect.activate(entity.getStats());
+                if(areaEffectBuffer == 75) {
+                    areaEffect.activate(entity);
+                    areaEffectBuffer = 0;
+                }else {
+                    areaEffectBuffer++;
+                }
             }
 
         }

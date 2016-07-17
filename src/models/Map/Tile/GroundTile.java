@@ -64,7 +64,7 @@ public class GroundTile extends Tile {
             item = null;
         }
         if(this.areaEffect != null){
-            areaEffect.activate(entity.getStats());
+            areaEffect.activate(entity);
         }
 
         return true;
@@ -80,6 +80,9 @@ public class GroundTile extends Tile {
         }
         g.drawImage(image , (int) location.getX() + 3 , (int) location.getY() + 3 , tileSize - 6 , tileSize - 6 , null);
 
+        if(areaEffect != null){
+            g.drawImage(areaEffect.getImage() , (int) location.getX() , (int) location.getY() , null);
+        }
         if(item != null){
             g.drawImage(item.getImage() , (int) location.getX(), (int) location.getY()  , null );
         }

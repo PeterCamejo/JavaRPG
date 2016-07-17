@@ -3,6 +3,7 @@ package models.Map;
 import game.Game;
 import models.Entity.Avatar;
 import models.Entity.Entity;
+import models.Factories.AreaEffectFactory;
 import models.Factories.ItemFactory;
 import models.Item.InteractiveItems.Obstacle;
 import models.Location;
@@ -20,24 +21,26 @@ public class Map {
     private Avatar player;
     private Tile[][] tiles;
     private int tileSize;
+    private int tileAmount;
     private int mapSize;
 
     //test
     Location test;
 
     /* Constructors */
-    public Map(Avatar player , int tileSize , int mapSize ){
+    public Map(Avatar player , int tileSize , int tileAmount ){
         this.player = player;
         this.tileSize = tileSize;
-        this.mapSize = mapSize;
-        tiles = new Tile[mapSize][mapSize];
+        this.tileAmount =  tileAmount;
+        tiles = new Tile[tileAmount][tileAmount];
+        mapSize = this.tileSize * this.tileAmount;
         init();
     }
 
     /* Methods */
     public void init() {
-        for(int i = 0 ; i < mapSize; i++){
-            for(int j = 0 ; j < mapSize; j++){
+        for(int i = 0 ; i < tileAmount; i++){
+            for(int j = 0 ; j < tileAmount; j++){
                 if(i == 4){
                     tiles[i][j] = new GroundTile(null , ItemFactory.getDoorKey() , null , null , new Location(i * tileSize , j* tileSize) , tileSize);
                 }else if(i == 6){
@@ -46,6 +49,8 @@ public class Map {
                     tiles[i][j] = new WaterTile(null , null , null , null, new Location(i * tileSize , j * tileSize) , tileSize);
                 }else if(i == 3 && j == 3){
                     tiles[i][j] = new GroundTile(null , null , null , ItemFactory.getBoulder() , new Location(i * tileSize , j * tileSize) , tileSize);
+                }else if(i == 5 && j == 5){
+                    tiles[i][j] = new GroundTile(null , null , AreaEffectFactory.getDamageHealthEffect(5), null , new Location(i * tileSize , j * tileSize) , tileSize );
                 }
 
                 else{
@@ -60,12 +65,13 @@ public class Map {
 
     public void tick(){
         updateEntityTile();
+
     }
 
     public void render(Graphics g){
 
-        for(int i = 0 ; i < mapSize ; i++){
-            for(int j = 0 ; j < mapSize; j++){
+        for(int i = 0 ; i < tileAmount ; i++){
+            for(int j = 0 ; j < tileAmount; j++){
                 if(tiles[i][j] != null){
                     tiles[i][j].render(g);
                 }
@@ -97,8 +103,10 @@ public class Map {
         Location center = player.getCenter();
         Point tilePoint = center.convertToTile(tileSize);
         player.setCurrentTile(tiles[tilePoint.x][tilePoint.y]);
-
-
+        tiles[tilePoint.x][tilePoint.y].tick();
     }
+
+    public int getMapSize(){ return mapSize;}
+    public Avatar getPlayer(){return player;}
 }
 
