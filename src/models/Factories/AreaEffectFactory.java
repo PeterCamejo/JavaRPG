@@ -11,9 +11,16 @@ public class AreaEffectFactory {
 
     /* Methods */
 
-    public static AreaEffect getDamageHealthEffect(double modifier){
+    public static HealthAreaEffect getDamageHealthEffect(double modifier){
         modifier = Math.abs(modifier); //ensure pos number in case negative given.
         HealthAreaEffect areaEffect = new HealthAreaEffect(-modifier);
+        areaEffect.setImage(Assets.damageAreaEffect);
+        return areaEffect;
+    }
+
+    public static HealthAreaEffect getHealHealthEffect(double modifier){
+        modifier = Math.abs(modifier);
+        HealthAreaEffect areaEffect = new HealthAreaEffect(modifier);
         areaEffect.setImage(Assets.healingAreaEffect);
         return areaEffect;
     }

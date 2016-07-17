@@ -58,6 +58,7 @@ public class Assets {
 
     /* Area Effects */
     public static BufferedImage healingAreaEffect;
+    public static BufferedImage damageAreaEffect;
 
     /* Methods */
     public static void init() {
@@ -96,6 +97,7 @@ public class Assets {
         SpriteSheet boulderSheet = new SpriteSheet(new ImageLoader().loadImage("/boulder.png"));
 
         SpriteSheet healingAreaEffectSheet = new SpriteSheet(new ImageLoader().loadImage("/healingAreaEffect.png"));
+        SpriteSheet damageAreaEffectSheet = new SpriteSheet(new ImageLoader().loadImage("/damageAreaEffect.png"));
 
         oneHand = oneHandSheet.crop(0, 0, width, height);
         dagger = daggerSheet.crop(0 , 0 ,width , height);
@@ -130,5 +132,6 @@ public class Assets {
         boulder = boulderSheet.crop(0 , 0 , width , height);
 
         healingAreaEffect = healingAreaEffectSheet.crop(0 , 0 , width , height);
+        damageAreaEffect = damageAreaEffectSheet.crop(0 , 0 , width , height);
     }
 }

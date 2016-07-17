@@ -51,6 +51,8 @@ public class Map {
                     tiles[i][j] = new GroundTile(null , null , null , ItemFactory.getBoulder() , new Location(i * tileSize , j * tileSize) , tileSize);
                 }else if(i == 5 && j == 5){
                     tiles[i][j] = new GroundTile(null , null , AreaEffectFactory.getDamageHealthEffect(5), null , new Location(i * tileSize , j * tileSize) , tileSize );
+                }else if(i == 5 && j == 6){
+                    tiles[i][j] = new GroundTile(null , null , AreaEffectFactory.getHealHealthEffect(5), null , new Location(i * tileSize , j * tileSize) , tileSize );
                 }
 
                 else{
